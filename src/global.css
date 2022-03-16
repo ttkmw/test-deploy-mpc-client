@@ -1,0 +1,160 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body,
+header,
+main,
+section,
+aside,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+button,
+select,
+table,
+colgroup,
+col,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td,
+ol,
+ul,
+p,
+a,
+strong,
+em,
+img,
+div,
+span {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: 700;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+input:not([type='checkbox'], [type='radio']),
+textarea,
+select {
+  padding: 0.2em 0.3em;
+  border: 1px solid #d2d2d7;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+textarea {
+  resize: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus,
+a:focus {
+  border-color: #0071e3;
+  outline: 3px solid rgba(0, 125, 250, 0.6);
+  outline-offset: 0;
+}
+
+input[type='checkbox'],
+input[type='radio'],
+select,
+button {
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-right: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th,
+td {
+  border-top: 1px solid #dfdfdf;
+  border-left: 1px solid #dfdfdf;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@media screen and (max-width: 736px) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+body,
+table,
+input,
+select,
+textarea,
+button {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont,
+    system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
+    'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  color: #2e2e2e;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
