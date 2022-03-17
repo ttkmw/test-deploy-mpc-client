@@ -158,3 +158,9 @@ button {
   flex-direction: column;
   min-height: 100vh;
 }
+
+main {
+  flex: 1;
+  margin-left: 320px;
+  padding: 4rem;
+}
