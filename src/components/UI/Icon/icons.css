@@ -1,0 +1,17 @@
+.icon {
+  display: inline-block;
+}
+
+.icon--left::before,
+.icon--right::after {
+  display: block;
+  content: '';
+}
+
+.icon--left::before {
+  margin-right: 6px;
+}
+
+.icon--right::after {
+  margin-left: 6px;
+}
