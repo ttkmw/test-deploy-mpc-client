@@ -69,6 +69,20 @@ img {
   vertical-align: bottom;
 }
 
+summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary:focus {
+  outline: 3px solid rgba(0, 125, 250, 0.6);
+  outline-offset: 0;
+}
+
 input:not([type='checkbox'], [type='radio']),
 textarea,
 select {

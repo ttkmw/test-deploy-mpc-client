@@ -1,0 +1,42 @@
+.search-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 2rem 2rem 0;
+  background-color: #fafafa;
+}
+
+.search-bar input[type='search'] {
+  width: 100%;
+  border-color: #f2f5f7;
+  background-color: #f2f5f7;
+}
+
+.nav {
+  margin-top: 2rem;
+  padding: 0 2rem 2rem;
+}
+
+.nav__title {
+  font-size: 1.8rem;
+}
+
+.branches-list {
+  margin-top: 1rem;
+}
+
+.branches-list > li + li {
+  margin-top: 0.6rem;
+}
+
+.stadiums-list > li {
+  margin-top: 0.4rem;
+  padding-left: 1rem;
+  font-size: 1.4rem;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
