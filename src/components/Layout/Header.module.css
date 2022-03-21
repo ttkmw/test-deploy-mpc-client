@@ -22,3 +22,15 @@
 .header__btn-utility {
   font-weight: 500;
 }
+
+@media screen and (max-width: 820px) {
+  .header__logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .header__btn-utility {
+    margin-left: auto;
+  }
+}
