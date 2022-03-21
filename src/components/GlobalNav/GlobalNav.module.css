@@ -20,23 +20,3 @@
 .nav__title {
   font-size: 1.8rem;
 }
-
-.branches-list {
-  margin-top: 1rem;
-}
-
-.branches-list > li + li {
-  margin-top: 0.6rem;
-}
-
-.stadiums-list > li {
-  margin-top: 0.4rem;
-  padding-left: 1rem;
-  font-size: 1.4rem;
-}
-
-.summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
