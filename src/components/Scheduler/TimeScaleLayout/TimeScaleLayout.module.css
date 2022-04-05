@@ -1,0 +1,9 @@
+.timescale-layout {
+  width: 90px;
+}
+
+@media screen and (max-width: 736px) {
+  .timescale-layout {
+    width: 70px;
+  }
+}

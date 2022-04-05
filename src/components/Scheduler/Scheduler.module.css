@@ -1,0 +1,21 @@
+.scheduler {
+  margin: 0 -4rem;
+  padding: 0 4rem;
+}
+
+.scheduler > div {
+  min-width: 736px;
+}
+
+@media screen and (max-width: 1280px) {
+  .scheduler {
+    overflow: auto;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .scheduler {
+    margin: 0 -5vw;
+    padding: 0 5vw;
+  }
+}

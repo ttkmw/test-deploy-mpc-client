@@ -1,0 +1,44 @@
+.timescale-label {
+  width: 90px;
+  border-color: transparent #dfdfdf transparent transparent;
+}
+
+@media screen and (max-width: 736px) {
+  .timescale-label {
+    width: 70px;
+  }
+}
+
+.timescale-label > div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4166em;
+  height: 8rem;
+}
+
+.timescale-label > div::after {
+  position: absolute;
+  top: -1px;
+  right: 0;
+  width: 10px;
+  height: 1px;
+  background-color: #dfdfdf;
+  content: '';
+}
+
+.timescale-label__time {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  font-size: 1.4rem;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 736px) {
+  .timescale-label__time {
+    font-size: 1.2rem;
+  }
+}

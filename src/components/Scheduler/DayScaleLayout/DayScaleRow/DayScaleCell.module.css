@@ -1,0 +1,12 @@
+.dayscale-cell {
+  border-top-color: transparent;
+  font-weight: 600;
+}
+
+.dayscale-cell.sun {
+  color: #ff4d37;
+}
+
+.dayscale-cell.sat {
+  color: #1570ff;
+}
