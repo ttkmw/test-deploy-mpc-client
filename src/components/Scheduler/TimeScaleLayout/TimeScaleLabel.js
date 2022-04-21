@@ -1,11 +1,15 @@
 import classes from './TimeScaleLabel.module.css';
 
 const TimeScaleLabel = (props) => {
-  const { firstDayHour } = props;
+  const { firstDayHour, className } = props;
 
   return (
     <tr>
-      <td className={classes['timescale-label']}>
+      <td
+        className={`${classes['timescale-label']} ${
+          className !== null ? classes.first : ''
+        }`}
+      >
         <div>
           <span className={classes['timescale-label__time']}>
             {firstDayHour < 12
@@ -15,6 +19,9 @@ const TimeScaleLabel = (props) => {
                 }시`}
           </span>
         </div>
+      </td>
+      <td className={classes['timescale-empty']}>
+        <div>&nbsp;</div>
       </td>
     </tr>
   );

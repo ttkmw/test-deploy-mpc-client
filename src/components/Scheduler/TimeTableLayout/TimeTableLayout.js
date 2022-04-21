@@ -1,5 +1,4 @@
 import TimeTableRow from './TimeTableRow';
-import classes from './TimeTableLayout.module.css';
 
 const TimeTableLayout = (props) => {
   const { startDayHour, endDayHour } = props;
@@ -9,7 +8,7 @@ const TimeTableLayout = (props) => {
     .map((row, idx) => <TimeTableRow key={idx} {...props} />);
 
   return (
-    <table className={classes['timetable-layout']}>
+    <table>
       <tbody>{timeTableRowsList}</tbody>
     </table>
   );

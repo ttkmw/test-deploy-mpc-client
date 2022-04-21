@@ -1,4 +1,4 @@
 .scheduler-body {
   display: flex;
-  margin-top: -1px;
+  width: 100%;
 }

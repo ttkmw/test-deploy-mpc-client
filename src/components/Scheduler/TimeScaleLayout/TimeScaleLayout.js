@@ -7,7 +7,12 @@ const TimeScaleLayout = (props) => {
   const timeScaleLabelList = Array(endDayHour - startDayHour)
     .fill()
     .map((row, idx) => (
-      <TimeScaleLabel key={idx} {...props} firstDayHour={startDayHour + idx} />
+      <TimeScaleLabel
+        key={idx}
+        {...props}
+        firstDayHour={startDayHour + idx}
+        className={idx === 0 ? 'first' : null}
+      />
     ));
 
   return (

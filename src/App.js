@@ -20,8 +20,8 @@ const App = () => {
             ]}
           >
             <WeekView
-              startDayHour={12}
-              endDayHour={21}
+              startDayHour={0}
+              endDayHour={24}
               // excludedDays={[0, 6]}
             />
           </Scheduler>

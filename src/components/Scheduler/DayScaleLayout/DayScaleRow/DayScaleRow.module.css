@@ -6,14 +6,3 @@
   padding: 0.4166em;
   height: 6rem;
 }
-
-.dayscale-cell--empty {
-  width: 90px;
-  border-color: transparent #dfdfdf transparent transparent;
-}
-
-@media screen and (max-width: 736px) {
-  .dayscale-cell--empty {
-    width: 70px;
-  }
-}

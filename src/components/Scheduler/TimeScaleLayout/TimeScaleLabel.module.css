@@ -1,12 +1,7 @@
 .timescale-label {
-  width: 90px;
-  border-color: transparent #dfdfdf transparent transparent;
-}
-
-@media screen and (max-width: 736px) {
-  .timescale-label {
-    width: 70px;
-  }
+  border-color: transparent;
+  border-right: none;
+  border-left: none;
 }
 
 .timescale-label > div {
@@ -18,27 +13,40 @@
   height: 8rem;
 }
 
-.timescale-label > div::after {
-  position: absolute;
-  top: -1px;
-  right: 0;
-  width: 10px;
-  height: 1px;
-  background-color: #dfdfdf;
-  content: '';
-}
-
 .timescale-label__time {
   position: absolute;
   top: 0;
-  right: 20px;
+  right: 10px;
   font-size: 1.4rem;
   transform: translateY(-50%);
   white-space: nowrap;
+}
+
+.timescale-label.first .timescale-label__time {
+  visibility: hidden;
 }
 
 @media screen and (max-width: 736px) {
   .timescale-label__time {
     font-size: 1.2rem;
   }
+}
+
+.timescale-empty {
+  width: 10px;
+  border-right: none;
+  border-left: none;
+}
+
+.timescale-empty > div {
+  position: relative;
+  height: 8rem;
+}
+
+.timescale-empty > div::after {
+  position: absolute;
+  inset: 0 -1px -1px auto;
+  z-index: 10;
+  border-right: 1px solid #dfdfdf;
+  content: '';
 }

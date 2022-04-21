@@ -1,0 +1,8 @@
+.scheduler-header {
+  position: sticky;
+  top: 0;
+  z-index: 70;
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+}

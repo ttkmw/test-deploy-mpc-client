@@ -1,14 +1,13 @@
-import { Fragment } from 'react';
-
 import SchedulerHeader from '../SchedulerLayout/SchedulerHeader/SchedulerHeader';
 import SchedulerBody from '../SchedulerLayout/SchedulerBody/SchedulerBody';
 import DayScaleLayout from '../DayScaleLayout/DayScaleLayout';
 import TimeScaleLayout from '../TimeScaleLayout/TimeScaleLayout';
 import TimeTableLayout from '../TimeTableLayout/TimeTableLayout';
+import classes from './WeekView.module.css';
 
 const WeekView = (props) => {
   return (
-    <Fragment>
+    <div className={classes.weekview}>
       <SchedulerHeader>
         <DayScaleLayout {...props} />
       </SchedulerHeader>
@@ -16,7 +15,7 @@ const WeekView = (props) => {
         <TimeScaleLayout {...props} />
         <TimeTableLayout {...props} />
       </SchedulerBody>
-    </Fragment>
+    </div>
   );
 };
 

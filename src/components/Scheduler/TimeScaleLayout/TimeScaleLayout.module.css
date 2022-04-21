@@ -1,9 +1,13 @@
 .timescale-layout {
-  width: 90px;
+  flex: 0 0 auto;
+  position: sticky;
+  left: 0;
+  z-index: 60;
+  width: 91px;
 }
 
 @media screen and (max-width: 736px) {
   .timescale-layout {
-    width: 70px;
+    width: 71px;
   }
 }

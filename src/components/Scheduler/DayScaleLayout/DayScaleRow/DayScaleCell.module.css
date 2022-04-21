@@ -1,4 +1,5 @@
 .dayscale-cell {
+  border-bottom: none;
   border-top-color: transparent;
   font-weight: 600;
 }
@@ -9,4 +10,11 @@
 
 .dayscale-cell.sat {
   color: #1570ff;
+}
+
+.dayscale-cell > div::after {
+  position: absolute;
+  inset: auto 0 -1px 0;
+  border-bottom: 1px solid #dfdfdf;
+  content: '';
 }

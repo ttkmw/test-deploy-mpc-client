@@ -15,9 +15,6 @@ const DayScaleRow = ({ excludedDays = null }) => {
 
   return (
     <tr className={classes['dayscale-row']}>
-      <td className={classes['dayscale-cell--empty']}>
-        <div>{null}</div>
-      </td>
       {excludedDays === null
         ? dayScaleCellList
         : dayScaleCellList.filter((day, idx) => !excludedDays.includes(idx))}
