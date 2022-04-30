@@ -1,0 +1,56 @@
+.date-navigator {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 70;
+  height: 6rem;
+  background-color: #fff;
+}
+
+.date-navigator__inner {
+  display: flex;
+  align-items: center;
+}
+
+.date-navigator__title {
+  flex: 0 0 15rem;
+  font-size: 2.4rem;
+}
+
+.date-navigator__buttons {
+  display: flex;
+  column-gap: 2.4rem;
+}
+
+.btn--border {
+  min-width: 4rem;
+  padding: 0.2em 1em;
+  border: 1px solid #dce3e8;
+  border-radius: 4px;
+  font-size: 1.2rem;
+}
+
+.btn--icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 736px) {
+  .date-navigator {
+    height: 5rem;
+  }
+
+  .date-navigator__title {
+    flex-basis: 13rem;
+    font-size: 2rem;
+  }
+
+  .date-navigator__buttons {
+    column-gap: 2rem;
+  }
+
+  .btn--border {
+    font-size: 1rem;
+  }
+}
