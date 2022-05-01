@@ -2,13 +2,13 @@ import DayScaleCell from './DayScaleCell';
 
 import classes from './DayScaleRow.module.css';
 
-const DayScaleRow = ({ excludedDays = null }) => {
-  const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+const DayScaleRow = (props) => {
+  const { excludedDays = null, daysOfWeek } = props;
 
-  const dayScaleCellList = dayOfWeek.map((day, idx) => (
+  const dayScaleCellList = daysOfWeek.map((date, idx) => (
     <DayScaleCell
       key={idx}
-      day={day}
+      date={date}
       className={idx === 0 ? 'sun' : idx === 6 ? 'sat' : ''}
     />
   ));
