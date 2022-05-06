@@ -1,8 +1,0 @@
-.dayscale-row td > div {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.4166em;
-  height: 6rem;
-}

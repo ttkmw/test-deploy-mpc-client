@@ -1,0 +1,53 @@
+.dayscale {
+  position: relative;
+  flex: 1;
+  padding: 4px;
+  border: 1px solid #dfdfdf;
+  border-top: none;
+  border-left: none;
+}
+
+.dayscale.sun {
+  color: #ff4d37;
+}
+
+.dayscale.sat {
+  color: #1570ff;
+}
+
+.dayscale__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2px;
+  width: 100%;
+  height: 6rem;
+  max-width: 5rem;
+  margin: 0 auto;
+  border-radius: 6px;
+}
+
+.dayscale.today .dayscale__inner {
+  background-color: #1570ff;
+  color: #fff;
+}
+
+.dayscale__weekday {
+  font-size: 1.2rem;
+}
+
+.dayscale__day {
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+
+@media screen and (max-width: 736px) {
+  .dayscale {
+    padding: 3px;
+  }
+
+  .dayscale__inner {
+    row-gap: 0;
+  }
+}

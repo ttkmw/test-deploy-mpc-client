@@ -19,8 +19,8 @@ const Scheduler = (props) => {
     return daysOfWeek;
   };
 
-  const daysOfWeekChangeHandler = (daysOfWeek) => {
-    setDaysOfWeek(getDaysOfWeek(daysOfWeek));
+  const daysOfWeekChangeHandler = (firstDayOfWeek) => {
+    setDaysOfWeek(getDaysOfWeek(firstDayOfWeek));
   };
 
   const [daysOfWeek, setDaysOfWeek] = useState(

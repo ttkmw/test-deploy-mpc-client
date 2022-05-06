@@ -1,13 +1,12 @@
 import SchedulerHeader from '../SchedulerLayout/SchedulerHeader/SchedulerHeader';
 import SchedulerBody from '../SchedulerLayout/SchedulerBody/SchedulerBody';
-import DayScaleLayout from '../DayScaleLayout/DayScaleLayout';
-import TimeScaleLayout from '../TimeScaleLayout/TimeScaleLayout';
-import TimeTableLayout from '../TimeTableLayout/TimeTableLayout';
-import classes from './WeekView.module.css';
+import DayScaleLayout from './DayScaleLayout/DayScaleLayout';
+import TimeScaleLayout from './TimeScaleLayout/TimeScaleLayout';
+import TimeTableLayout from './TimeTableLayout/TimeTableLayout';
 
 const WeekView = (props) => {
   return (
-    <div className={classes.weekview}>
+    <div>
       <SchedulerHeader>
         <DayScaleLayout {...props} />
       </SchedulerHeader>

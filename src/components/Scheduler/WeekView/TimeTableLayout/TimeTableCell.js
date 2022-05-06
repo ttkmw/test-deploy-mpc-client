@@ -2,9 +2,9 @@ import classes from './TimeTableCell.module.css';
 
 const TimeTableCell = (props) => {
   return (
-    <td className={classes['timetable-cell']}>
-      <div></div>
-    </td>
+    <div className={classes['timetable-cell']}>
+      <div className={classes['timetable-cell__inner']}></div>
+    </div>
   );
 };
 

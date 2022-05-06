@@ -1,0 +1,22 @@
+.dayscale-empty {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  max-width: 91px;
+  padding: 4px;
+  border: 1px solid #dfdfdf;
+  border-top: none;
+  border-left: none;
+  background-color: #fff;
+}
+
+.dayscale-empty__inner {
+  height: 100%;
+}
+
+@media screen and (max-width: 736px) {
+  .dayscale-empty {
+    max-width: 61px;
+  }
+}
