@@ -2,11 +2,32 @@ import TimeTableRow from './TimeTableRow';
 import classes from './TimeTableLayout.module.css';
 
 const TimeTableLayout = (props) => {
-  const { startDayHour = 0, endDayHour = 24 } = props;
+  const { startDayHour = 0, endDayHour = 24, daysOfWeek, data = [] } = props;
+
+  const filterdAppointments = Array(24)
+    .fill()
+    .map((row) => []);
+
+  data.forEach((appointment) => {
+    const startTime = new Date(appointment.time.startTime).getHours();
+
+    if (
+      daysOfWeek[0] <= new Date(`${appointment.date}T00:00`) &&
+      daysOfWeek[daysOfWeek.length - 1] >= new Date(`${appointment.date}T00:00`)
+    ) {
+      filterdAppointments[startTime].push(appointment);
+    }
+  });
 
   const timeTableRowsList = Array(24)
     .fill()
-    .map((row, idx) => <TimeTableRow key={idx} {...props} />);
+    .map((row, idx) => (
+      <TimeTableRow
+        key={idx}
+        appointmentsList={filterdAppointments[idx]}
+        {...props}
+      />
+    ));
 
   return (
     <div className={classes['timetable-layout']}>

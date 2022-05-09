@@ -6,18 +6,15 @@ import Scheduler from './components/Scheduler/Scheduler';
 import WeekView from './components/Scheduler/WeekView/WeekView';
 import DateNavigator from './components/Scheduler/DateNavigator/DateNavigator';
 
+import { appointments } from './dummy-data/appointments';
+
 const App = () => {
   return (
     <Fragment>
       <Header />
       <BodyContainer>
         <main>
-          <Scheduler
-            data={[
-              { id: 'sche1', title: 'title01' },
-              { id: 'sche2', title: 'title02' },
-            ]}
-          >
+          <Scheduler data={appointments}>
             <DateNavigator />
             <WeekView
               startDayHour={0}

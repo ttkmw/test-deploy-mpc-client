@@ -2,11 +2,19 @@ import TimeTableCell from './TimeTableCell';
 import classes from './TimeTableRow.module.css';
 
 const TimeTableRow = (props) => {
-  const { excludedDays = null } = props;
+  const { excludedDays = null, appointmentsList } = props;
+
+  const cellsData = Array(7).fill();
+
+  appointmentsList.forEach((appointment) => {
+    cellsData[new Date(appointment.date).getDay()] = appointment;
+  });
 
   const timeTableCellsList = Array(7)
     .fill()
-    .map((row, idx) => <TimeTableCell key={idx} {...props} />);
+    .map((cell, idx) => (
+      <TimeTableCell key={idx} cellData={cellsData[idx]} {...props} />
+    ));
 
   return (
     <div className={classes['timetable-row']}>

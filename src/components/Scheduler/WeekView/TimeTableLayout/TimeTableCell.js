@@ -1,11 +1,18 @@
+import Appointment from '../Appointment/Appointment';
 import classes from './TimeTableCell.module.css';
 
 const TimeTableCell = (props) => {
-  return (
-    <div className={classes['timetable-cell']}>
-      <div className={classes['timetable-cell__inner']}></div>
-    </div>
-  );
+  const { cellData = null } = props;
+
+  if (cellData) {
+    return (
+      <div className={classes['timetable-cell']}>
+        <Appointment appointment={cellData} />
+      </div>
+    );
+  }
+
+  return <div className={classes['timetable-cell']}></div>;
 };
 
 export default TimeTableCell;

@@ -1,0 +1,28 @@
+.appointment {
+  position: absolute;
+  top: .4rem;
+  right: .4rem;
+  left: .4rem;
+  z-index: 10;
+  height: 100%;
+  padding: .2em .4em;
+  border-radius: 3px;
+  background-color: #ffc001;
+  color: #2e2e2e;
+  font-size: 1.4rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.appointment::before {
+  position: absolute;
+  inset: calc(-.4rem - .5px);
+  background-color: transparent;
+  content: '';
+}
+
+@media screen and (max-width: 736px) {
+  .appointment {
+    font-size: 1.2rem;
+  }
+}
