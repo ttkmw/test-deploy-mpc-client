@@ -1,57 +1,22 @@
-import { useState, useEffect } from 'react';
-
 import classes from './DateNavigator.module.css';
 
 const DateNavigator = (props) => {
   const {
-    defaultCurrentDate = new Date(),
     daysOfWeek,
     onChangeDaysOfWeek,
   } = props;
 
   const prevWeekHandler = () => {
-    setSchedulerFirstDayOfWeek(
-      (prevState) =>
-        new Date(
-          prevState.getFullYear(),
-          prevState.getMonth(),
-          prevState.getDate() - 7
-        )
-    );
+    onChangeDaysOfWeek({type: 'PREV_WEEK'})
   };
 
   const nextWeekHandler = () => {
-    setSchedulerFirstDayOfWeek(
-      (prevState) =>
-        new Date(
-          prevState.getFullYear(),
-          prevState.getMonth(),
-          prevState.getDate() + 7
-        )
-    );
+    onChangeDaysOfWeek({type: 'NEXT_WEEK'})
   };
 
   const currentWeekHandler = () => {
-    setSchedulerFirstDayOfWeek(
-      new Date(
-        defaultCurrentDate.getFullYear(),
-        defaultCurrentDate.getMonth(),
-        defaultCurrentDate.getDate() - defaultCurrentDate.getDay()
-      )
-    );
+    onChangeDaysOfWeek({type: 'CUR_WEEK', value: new Date()})
   };
-
-  const [schedulerFirstDayOfWeek, setSchedulerFirstDayOfWeek] = useState(
-    new Date(
-      defaultCurrentDate.getFullYear(),
-      defaultCurrentDate.getMonth(),
-      defaultCurrentDate.getDate() - defaultCurrentDate.getDay()
-    )
-  );
-
-  useEffect(() => {
-    onChangeDaysOfWeek(schedulerFirstDayOfWeek);
-  }, [schedulerFirstDayOfWeek]);
 
   return (
     <div className={classes['date-navigator']}>
