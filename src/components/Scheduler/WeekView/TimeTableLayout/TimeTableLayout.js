@@ -1,4 +1,5 @@
 import TimeTableRow from './TimeTableRow';
+import TimeIndicator from './TimeIndicator/TimeIndicator';
 import classes from './TimeTableLayout.module.css';
 
 const TimeTableLayout = (props) => {
@@ -34,6 +35,7 @@ const TimeTableLayout = (props) => {
       {timeTableRowsList.filter(
         (row, idx) => startDayHour <= idx && endDayHour >= idx
       )}
+      <TimeIndicator />
     </div>
   );
 };
