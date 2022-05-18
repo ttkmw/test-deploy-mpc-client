@@ -1,40 +1,43 @@
 import classes from './DateNavigator.module.css';
 
 const DateNavigator = (props) => {
-  const {
-    daysOfWeek,
-    onChangeDaysOfWeek,
-  } = props;
+  const { schedulerDate, onChangeSchedulerDate } = props;
 
-  const prevWeekHandler = () => {
-    onChangeDaysOfWeek({type: 'PREV_WEEK'})
+  const prevDateHandler = () => {
+    onChangeSchedulerDate({ type: 'PREV_MONTH' });
+    // onChangeSchedulerDate({ type: 'PREV_WEEK' });
   };
 
-  const nextWeekHandler = () => {
-    onChangeDaysOfWeek({type: 'NEXT_WEEK'})
+  const nextDateHandler = () => {
+    onChangeSchedulerDate({ type: 'NEXT_MONTH' });
+    // onChangeSchedulerDate({ type: 'NEXT_WEEK' });
   };
 
-  const currentWeekHandler = () => {
-    onChangeDaysOfWeek({type: 'CUR_WEEK', value: new Date()})
+  const curDateHandler = () => {
+    onChangeSchedulerDate({ type: 'CUR_MONTH', value: new Date() });
+    // onChangeSchedulerDate({ type: 'CUR_WEEK', value: new Date() });
   };
 
   return (
     <div className={classes['date-navigator']}>
       <div className={classes['date-navigator__inner']}>
         <strong className={classes['date-navigator__title']}>
-          {`${daysOfWeek[0].getFullYear()}년 ${daysOfWeek[0].getMonth() + 1}월`}
+          {/* {`${schedulerDate[0].getFullYear()}년 ${schedulerDate[0].getMonth() + 1}월`} */}
+          {`${schedulerDate[6].getFullYear()}년 ${
+            schedulerDate[6].getMonth() + 1
+          }월`}
         </strong>
         <div className={classes['date-navigator__buttons']}>
           <button
             type='button'
             className={classes['btn--icon']}
-            onClick={prevWeekHandler}
+            onClick={prevDateHandler}
           >
             &lt;
           </button>
           <button
             type='button'
-            onClick={currentWeekHandler}
+            onClick={curDateHandler}
             className={classes['btn--border']}
           >
             오늘
@@ -42,7 +45,7 @@ const DateNavigator = (props) => {
           <button
             type='button'
             className={classes['btn--icon']}
-            onClick={nextWeekHandler}
+            onClick={nextDateHandler}
           >
             &gt;
           </button>

@@ -4,6 +4,7 @@ import Header from './components/Layout/Header';
 import BodyContainer from './components/Layout/BodyContainer';
 import Scheduler from './components/Scheduler/Scheduler';
 import WeekView from './components/Scheduler/WeekView/WeekView';
+import MonthView from './components/Scheduler/MonthView/MonthView';
 import DateNavigator from './components/Scheduler/DateNavigator/DateNavigator';
 
 import { appointments } from './dummy-data/appointments';
@@ -16,11 +17,12 @@ const App = () => {
         <main>
           <Scheduler data={appointments}>
             <DateNavigator />
-            <WeekView
+            {/* <WeekView
               startDayHour={0}
               endDayHour={24}
-              // excludedDays={[0, 6]}
-            />
+              excludedDays={[0, 6]}
+            /> */}
+            <MonthView />
           </Scheduler>
         </main>
       </BodyContainer>

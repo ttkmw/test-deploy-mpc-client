@@ -1,0 +1,31 @@
+.dayscale {
+  position: relative;
+  flex: 1;
+  padding: 4px;
+  border: 1px solid #dfdfdf;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
+.dayscale.sun {
+  color: #ff4d37;
+}
+
+.dayscale.sat {
+  color: #1570ff;
+}
+
+.dayscale__inner {
+  width: 100%;
+}
+
+.dayscale__weekday {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 736px) {
+  .dayscale {
+    padding: 3px;
+  }
+}

@@ -2,13 +2,15 @@ import DayScale from './DayScale';
 import classes from './DayScaleWrap.module.css';
 
 const DayScaleWrap = (props) => {
-  const { excludedDays = null, schedulerDate } = props;
+  const { excludedDays = null } = props;
 
-  const dayScaleList = schedulerDate.map((date, idx) => (
+  const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+
+  const dayScaleList = daysOfWeek.map((day, idx) => (
     <DayScale
       key={idx}
-      date={date}
-      className={idx === 0 ? 'sun' : idx === 6 ? 'sat' : null}
+      dayOfWeek={day}
+      className={idx === 0 ? 'sun' : idx === 6 ? 'sat' : ''}
     />
   ));
   return (

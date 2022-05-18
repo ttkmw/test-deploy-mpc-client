@@ -3,7 +3,7 @@ import TimeIndicator from './TimeIndicator/TimeIndicator';
 import classes from './TimeTableLayout.module.css';
 
 const TimeTableLayout = (props) => {
-  const { startDayHour = 0, endDayHour = 24, daysOfWeek, data = [] } = props;
+  const { startDayHour = 0, endDayHour = 24, schedulerDate, data = [] } = props;
 
   const filterdAppointments = Array(24)
     .fill()
@@ -13,8 +13,9 @@ const TimeTableLayout = (props) => {
     const startTime = new Date(appointment.time.startTime).getHours();
 
     if (
-      daysOfWeek[0] <= new Date(`${appointment.date}T00:00`) &&
-      daysOfWeek[daysOfWeek.length - 1] >= new Date(`${appointment.date}T00:00`)
+      schedulerDate[0] <= new Date(`${appointment.date}T00:00`) &&
+      schedulerDate[schedulerDate.length - 1] >=
+        new Date(`${appointment.date}T00:00`)
     ) {
       filterdAppointments[startTime].push(appointment);
     }

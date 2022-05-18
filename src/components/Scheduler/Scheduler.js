@@ -24,7 +24,42 @@ const getDaysOfWeek = (firstDayOfWeek) => {
   return daysOfWeek;
 };
 
-const daysOfWeekReducer = (state, action) => {
+const getDaysOfMonth = (firstDayOfWeek, curDate) => {
+  const daysOfMonth = [];
+
+  if (
+    firstDayOfWeek.getMonth() !== curDate.getMonth() ||
+    firstDayOfWeek.getDate() === 1
+  ) {
+    for (let i = 0; i < 42; i++) {
+      daysOfMonth[i] = new Date(
+        firstDayOfWeek.getFullYear(),
+        firstDayOfWeek.getMonth(),
+        firstDayOfWeek.getDate() + i
+      );
+    }
+  }
+
+  if (firstDayOfWeek.getMonth() === curDate.getMonth()) {
+    const firstOfThisMonth = new Date(
+      curDate.getFullYear(),
+      curDate.getMonth(),
+      1
+    );
+
+    for (let i = 0; i < 42; i++) {
+      daysOfMonth[i] = new Date(
+        firstOfThisMonth.getFullYear(),
+        firstOfThisMonth.getMonth(),
+        firstOfThisMonth.getDate() - firstOfThisMonth.getDay() + i
+      );
+    }
+  }
+
+  return daysOfMonth;
+};
+
+const schedulerDateReducer = (state, action) => {
   switch (action.type) {
     case 'PREV_WEEK':
       return getDaysOfWeek(
@@ -50,6 +85,33 @@ const daysOfWeekReducer = (state, action) => {
           action.value.getDate() - action.value.getDay()
         )
       );
+    case 'PREV_MONTH':
+      return getDaysOfMonth(
+        new Date(
+          state[0].getFullYear(),
+          state[0].getMonth(),
+          state[0].getDate() - 7
+        ),
+        new Date(state[6].getFullYear(), state[6].getMonth(), 0)
+      );
+    case 'NEXT_MONTH':
+      return getDaysOfMonth(
+        new Date(
+          state[0].getFullYear(),
+          state[0].getMonth(),
+          state[0].getDate() + 42
+        ),
+        new Date(state[6].getFullYear(), state[6].getMonth() + 1, 1)
+      );
+    case 'CUR_MONTH':
+      return getDaysOfMonth(
+        new Date(
+          action.value.getFullYear(),
+          action.value.getMonth(),
+          action.value.getDate() - action.value.getDay()
+        ),
+        action.value
+      );
     default:
       return state;
   }
@@ -58,9 +120,9 @@ const daysOfWeekReducer = (state, action) => {
 const Scheduler = (props) => {
   const { defaultCurrentDate = new Date() } = props;
 
-  const [daysOfWeek, dispatchDaysOfWeek] = useReducer(
-    daysOfWeekReducer,
-    getDaysOfWeek(getFirstDayOfWeek(defaultCurrentDate))
+  const [schedulerDate, dispatchSchedulerDate] = useReducer(
+    schedulerDateReducer,
+    getDaysOfMonth(getFirstDayOfWeek(defaultCurrentDate), defaultCurrentDate)
   );
 
   const addPropsToReactElement = (element, props) => {
@@ -83,8 +145,8 @@ const Scheduler = (props) => {
     <div className={classes.scheduler}>
       {addPropsToChildren(props.children, {
         ...props,
-        daysOfWeek,
-        onChangeDaysOfWeek: dispatchDaysOfWeek,
+        schedulerDate,
+        onChangeSchedulerDate: dispatchSchedulerDate,
       })}
     </div>
   );
