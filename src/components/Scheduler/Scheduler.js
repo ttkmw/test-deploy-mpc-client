@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 
 import classes from './Scheduler.module.css';
 
@@ -112,6 +112,13 @@ const schedulerDateReducer = (state, action) => {
         ),
         action.value
       );
+    case 'CHANGE_TO_WEEK_VIEW':
+      if (state[0].getMonth() === state[6].getMonth()) {
+        return getDaysOfWeek(new Date(state[0]));
+      }
+      return getDaysOfWeek(new Date(state[7]));
+    case 'CHANGE_TO_MONTH_VIEW':
+      return getDaysOfMonth(new Date(state[0]), state[6]);
     default:
       return state;
   }
@@ -120,13 +127,38 @@ const schedulerDateReducer = (state, action) => {
 const Scheduler = (props) => {
   const { defaultCurrentDate = new Date() } = props;
 
+  const [viewState, setViewState] = useState(false);
   const [schedulerDate, dispatchSchedulerDate] = useReducer(
     schedulerDateReducer,
     getDaysOfMonth(getFirstDayOfWeek(defaultCurrentDate), defaultCurrentDate)
   );
 
+  useEffect(() => {}, [schedulerDate]);
+
+  const changeViewHandler = () => {
+    if (!viewState) {
+      dispatchSchedulerDate({ type: 'CHANGE_TO_WEEK_VIEW' });
+    }
+
+    if (viewState) {
+      dispatchSchedulerDate({ type: 'CHANGE_TO_MONTH_VIEW' });
+    }
+
+    setViewState((prevView) => !prevView);
+  };
+
   const addPropsToReactElement = (element, props) => {
     if (React.isValidElement(element)) {
+      const { viewState } = props;
+
+      if (!viewState && element.type.name === 'WeekView') {
+        return;
+      }
+
+      if (viewState && element.type.name === 'MonthView') {
+        return;
+      }
+
       return React.cloneElement(element, props);
     }
     return element;
@@ -145,6 +177,8 @@ const Scheduler = (props) => {
     <div className={classes.scheduler}>
       {addPropsToChildren(props.children, {
         ...props,
+        viewState,
+        onChangeView: changeViewHandler,
         schedulerDate,
         onChangeSchedulerDate: dispatchSchedulerDate,
       })}

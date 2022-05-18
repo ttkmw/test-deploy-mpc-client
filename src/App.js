@@ -17,11 +17,11 @@ const App = () => {
         <main>
           <Scheduler data={appointments}>
             <DateNavigator />
-            {/* <WeekView
+            <WeekView
               startDayHour={0}
               endDayHour={24}
-              excludedDays={[0, 6]}
-            /> */}
+              // excludedDays={[0, 6]}
+            />
             <MonthView />
           </Scheduler>
         </main>
