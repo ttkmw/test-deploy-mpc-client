@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useEffect } from 'react';
+import React, { useReducer } from 'react';
 
 import classes from './Scheduler.module.css';
 
@@ -62,63 +62,95 @@ const getDaysOfMonth = (firstDayOfWeek, curDate) => {
 const schedulerDateReducer = (state, action) => {
   switch (action.type) {
     case 'PREV_WEEK':
-      return getDaysOfWeek(
-        new Date(
-          state[0].getFullYear(),
-          state[0].getMonth(),
-          state[0].getDate() - 7
-        )
-      );
+      return {
+        viewState: state.viewState,
+        date: getDaysOfWeek(
+          new Date(
+            state.date[0].getFullYear(),
+            state.date[0].getMonth(),
+            state.date[0].getDate() - 7
+          )
+        ),
+      };
     case 'NEXT_WEEK':
-      return getDaysOfWeek(
-        new Date(
-          state[0].getFullYear(),
-          state[0].getMonth(),
-          state[0].getDate() + 7
-        )
-      );
+      return {
+        viewState: state.viewState,
+        date: getDaysOfWeek(
+          new Date(
+            state.date[0].getFullYear(),
+            state.date[0].getMonth(),
+            state.date[0].getDate() + 7
+          )
+        ),
+      };
     case 'CUR_WEEK':
-      return getDaysOfWeek(
-        new Date(
-          action.value.getFullYear(),
-          action.value.getMonth(),
-          action.value.getDate() - action.value.getDay()
-        )
-      );
+      return {
+        viewState: state.viewState,
+        date: getDaysOfWeek(
+          new Date(
+            action.value.getFullYear(),
+            action.value.getMonth(),
+            action.value.getDate() - action.value.getDay()
+          )
+        ),
+      };
     case 'PREV_MONTH':
-      return getDaysOfMonth(
-        new Date(
-          state[0].getFullYear(),
-          state[0].getMonth(),
-          state[0].getDate() - 7
+      return {
+        viewState: state.viewState,
+        date: getDaysOfMonth(
+          new Date(
+            state.date[0].getFullYear(),
+            state.date[0].getMonth(),
+            state.date[0].getDate() - 7
+          ),
+          new Date(state.date[6].getFullYear(), state.date[6].getMonth(), 0)
         ),
-        new Date(state[6].getFullYear(), state[6].getMonth(), 0)
-      );
+      };
     case 'NEXT_MONTH':
-      return getDaysOfMonth(
-        new Date(
-          state[0].getFullYear(),
-          state[0].getMonth(),
-          state[0].getDate() + 42
+      return {
+        viewState: state.viewState,
+        date: getDaysOfMonth(
+          new Date(
+            state.date[0].getFullYear(),
+            state.date[0].getMonth(),
+            state.date[0].getDate() + 42
+          ),
+          new Date(state.date[6].getFullYear(), state.date[6].getMonth() + 1, 1)
         ),
-        new Date(state[6].getFullYear(), state[6].getMonth() + 1, 1)
-      );
+      };
     case 'CUR_MONTH':
-      return getDaysOfMonth(
-        new Date(
-          action.value.getFullYear(),
-          action.value.getMonth(),
-          action.value.getDate() - action.value.getDay()
+      return {
+        viewState: state.viewState,
+        date: getDaysOfMonth(
+          new Date(
+            action.value.getFullYear(),
+            action.value.getMonth(),
+            action.value.getDate() - action.value.getDay()
+          ),
+          action.value
         ),
-        action.value
-      );
-    case 'CHANGE_TO_WEEK_VIEW':
-      if (state[0].getMonth() === state[6].getMonth()) {
-        return getDaysOfWeek(new Date(state[0]));
+      };
+    case 'SWITCH_VIEW':
+      if (!state.viewState) {
+        if (state.date[0].getMonth() === state.date[6].getMonth()) {
+          return {
+            viewState: !state.viewState,
+            date: getDaysOfWeek(new Date(state.date[0])),
+          };
+        }
+        return {
+          viewState: !state.viewState,
+          date: getDaysOfWeek(new Date(state.date[7])),
+        };
       }
-      return getDaysOfWeek(new Date(state[7]));
-    case 'CHANGE_TO_MONTH_VIEW':
-      return getDaysOfMonth(new Date(state[0]), state[6]);
+
+      if (state.viewState) {
+        return {
+          viewState: !state.viewState,
+          date: getDaysOfMonth(new Date(state.date[0]), state.date[6]),
+        };
+      }
+      return state;
     default:
       return state;
   }
@@ -127,29 +159,20 @@ const schedulerDateReducer = (state, action) => {
 const Scheduler = (props) => {
   const { defaultCurrentDate = new Date() } = props;
 
-  const [viewState, setViewState] = useState(false);
   const [schedulerDate, dispatchSchedulerDate] = useReducer(
     schedulerDateReducer,
-    getDaysOfMonth(getFirstDayOfWeek(defaultCurrentDate), defaultCurrentDate)
+    {
+      viewState: false,
+      date: getDaysOfMonth(
+        getFirstDayOfWeek(defaultCurrentDate),
+        defaultCurrentDate
+      ),
+    }
   );
-
-  useEffect(() => {}, [schedulerDate]);
-
-  const changeViewHandler = () => {
-    if (!viewState) {
-      dispatchSchedulerDate({ type: 'CHANGE_TO_WEEK_VIEW' });
-    }
-
-    if (viewState) {
-      dispatchSchedulerDate({ type: 'CHANGE_TO_MONTH_VIEW' });
-    }
-
-    setViewState((prevView) => !prevView);
-  };
 
   const addPropsToReactElement = (element, props) => {
     if (React.isValidElement(element)) {
-      const { viewState } = props;
+      const { viewState } = schedulerDate;
 
       if (!viewState && element.type.name === 'WeekView') {
         return;
@@ -177,8 +200,6 @@ const Scheduler = (props) => {
     <div className={classes.scheduler}>
       {addPropsToChildren(props.children, {
         ...props,
-        viewState,
-        onChangeView: changeViewHandler,
         schedulerDate,
         onChangeSchedulerDate: dispatchSchedulerDate,
       })}

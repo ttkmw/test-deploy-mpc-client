@@ -6,8 +6,8 @@ const TimeTableLayout = (props) => {
 
   const weeks = [];
 
-  for (let i = 0; i < schedulerDate.length; i += 7) {
-    weeks.push(schedulerDate.slice(i, i + 7));
+  for (let i = 0; i < schedulerDate.date.length; i += 7) {
+    weeks.push(schedulerDate.date.slice(i, i + 7));
   }
 
   const timeTableRowsList = Array(6)

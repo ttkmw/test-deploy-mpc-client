@@ -4,7 +4,7 @@ import classes from './DayScaleWrap.module.css';
 const DayScaleWrap = (props) => {
   const { excludedDays = null, schedulerDate } = props;
 
-  const dayScaleList = schedulerDate.map((date, idx) => (
+  const dayScaleList = schedulerDate.date.map((date, idx) => (
     <DayScale
       key={idx}
       date={date}

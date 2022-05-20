@@ -13,8 +13,8 @@ const TimeTableLayout = (props) => {
     const startTime = new Date(appointment.time.startTime).getHours();
 
     if (
-      schedulerDate[0] <= new Date(`${appointment.date}T00:00`) &&
-      schedulerDate[schedulerDate.length - 1] >=
+      schedulerDate.date[0] <= new Date(`${appointment.date}T00:00`) &&
+      schedulerDate.date[schedulerDate.date.length - 1] >=
         new Date(`${appointment.date}T00:00`)
     ) {
       filterdAppointments[startTime].push(appointment);
