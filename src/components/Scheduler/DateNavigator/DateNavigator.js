@@ -34,18 +34,43 @@ const DateNavigator = (props) => {
     }
   };
 
+  const dateChangeHandler = (evt) => {
+    if (!evt.target.value) return;
+    if (!schedulerDate.viewState) {
+      onChangeSchedulerDate({
+        type: 'CUR_MONTH',
+        value: new Date(evt.target.value),
+      });
+    }
+
+    if (schedulerDate.viewState) {
+      onChangeSchedulerDate({
+        type: 'CUR_WEEK',
+        value: new Date(evt.target.value),
+      });
+    }
+  };
+
   return (
     <div className={classes['date-navigator']}>
       <div className={classes['date-navigator__inner']}>
         <strong className={classes['date-navigator__title']}>
           {schedulerDate.viewState &&
-            `${schedulerDate.date[0].getFullYear()}년 ${
+            `${
               schedulerDate.date[0].getMonth() + 1
-            }월`}
+            }월 ${schedulerDate.date[0].getDate()}일 - ${
+              schedulerDate.date[6].getMonth() + 1
+            }월 ${schedulerDate.date[6].getDate()}일`}
           {!schedulerDate.viewState &&
             `${schedulerDate.date[6].getFullYear()}년 ${
               schedulerDate.date[6].getMonth() + 1
             }월`}
+          <input
+            type='date'
+            value={schedulerDate.date[6].toJSON().split('T')[0]}
+            onChange={dateChangeHandler}
+            className={classes['date-navigator__input-date']}
+          />
         </strong>
         <div className={classes['date-navigator__buttons']}>
           <button

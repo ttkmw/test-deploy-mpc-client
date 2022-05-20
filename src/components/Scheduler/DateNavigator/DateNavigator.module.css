@@ -10,11 +10,31 @@
 .date-navigator__inner {
   display: flex;
   align-items: center;
+  column-gap: 2rem;
 }
 
 .date-navigator__title {
-  flex: 0 0 15rem;
+  position: relative;
+  flex: 0 0 24rem;
   font-size: 2.4rem;
+}
+
+.date-navigator__input-date[type='date'] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background-color: #fff;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.date-navigator__input-date[type='date']::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  cursor: pointer;
 }
 
 .date-navigator__buttons {
