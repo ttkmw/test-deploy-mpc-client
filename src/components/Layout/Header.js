@@ -1,5 +1,4 @@
 import HeaderUtilityButton from './HeaderUtilityButton';
-import Chevron from '../UI/Icon/Chevron/Chevron';
 import classes from './Header.module.css';
 
 const Header = () => {
@@ -16,7 +15,6 @@ const Header = () => {
         </h1>
         <HeaderUtilityButton className={classes['header__btn-utility']}>
           사용자
-          <Chevron className={['icon--right', 'icon-chevron--down']} />
         </HeaderUtilityButton>
       </div>
     </header>
