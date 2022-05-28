@@ -1,0 +1,28 @@
+.input--label-checkbox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.input--checkbox {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: #fafafa;
+}
+
+.input--checkbox:checked {
+  background-color: #1570ff;
+}
+
+.input--checkbox + span {
+  position: absolute;
+  font-size: 1.3rem;
+  color: #9fb1bd;
+}
+
+.input--checkbox:checked + span {
+  color: #fff;
+}

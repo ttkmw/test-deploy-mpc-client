@@ -1,0 +1,29 @@
+.input--label-radio {
+  display: flex;
+  column-gap: 0.5rem;
+  cursor: pointer;
+}
+
+.input--radio {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid #dce3e8;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.input--radio:checked {
+  border-color: #1570ff;
+}
+
+.input--radio:checked::after {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background-color: #1570ff;
+  content: '';
+}

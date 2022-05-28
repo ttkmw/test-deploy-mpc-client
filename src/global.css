@@ -21,6 +21,7 @@ form,
 input,
 button,
 select,
+textarea,
 table,
 colgroup,
 col,
@@ -83,12 +84,9 @@ summary:focus {
   outline-offset: 0;
 }
 
-input:not([type='checkbox'], [type='radio']),
+input,
 textarea,
 select {
-  padding: 0.2em 0.3em;
-  border: 1px solid #d2d2d7;
-  background-color: transparent;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
