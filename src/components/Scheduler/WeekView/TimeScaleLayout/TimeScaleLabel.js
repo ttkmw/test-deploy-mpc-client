@@ -7,12 +7,9 @@ const TimeScaleLabel = (props) => {
     <div className={classes['timescale-label']}>
       <div className={classes['timescale-label__time']}>
         <span>
-          {firstDayHour < 12
-            ? `오전 ${firstDayHour}시`
-            : `오후 ${firstDayHour - 12 !== 0 ? `${firstDayHour - 12}` : 12}시`}
+          {firstDayHour < 10 ? `0${firstDayHour}시` : `${firstDayHour}시`}
         </span>
       </div>
-      <div className={classes['timescale-label__empty']}></div>
     </div>
   );
 };

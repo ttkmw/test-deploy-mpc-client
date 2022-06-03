@@ -3,20 +3,30 @@
   left: 0;
   z-index: 10;
   width: 100%;
-  max-width: 91px;
-  padding: 4px;
-  border: 1px solid #dfdfdf;
-  border-top: none;
-  border-left: none;
+  max-width: 5.4rem;
+  padding: .6rem 1.2rem;
+  border-bottom: 1px solid #dce3e8;
   background-color: #fff;
 }
 
-.dayscale-empty__inner {
-  height: 100%;
+.dayscale-empty::before {
+  position: absolute;
+  right: 1px;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background-color: #fff;
+  content: '';
 }
 
 @media screen and (max-width: 736px) {
   .dayscale-empty {
-    max-width: 61px;
+    max-width: 4.8rem;
+    padding: .8rem .4rem;
+    border-bottom: 1px solid #dce3e8;
+  }
+
+  .dayscale-empty::before {
+    display: none;
   }
 }

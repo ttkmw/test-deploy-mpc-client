@@ -7,12 +7,18 @@ const TimeTableCell = (props) => {
   if (cellData) {
     return (
       <div className={classes['timetable-cell']}>
-        <Appointment appointment={cellData} />
+        <div className={classes['timetable-cell__inner']}>
+          <Appointment appointment={cellData} />
+        </div>
       </div>
     );
   }
 
-  return <div className={classes['timetable-cell']}></div>;
+  return (
+    <div className={classes['timetable-cell']}>
+      <div className={classes['timetable-cell__inner']}></div>
+    </div>
+  );
 };
 
 export default TimeTableCell;

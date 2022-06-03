@@ -14,7 +14,7 @@ const TimeIndicator = () => {
         0
       )
   );
-  const movePerMillisec = `( 8rem / 60 / 60 / 1000 )`;
+  const movePerMillisec = `( 5.5rem / 60 / 60 / 1000 )`;
   const indicatorPoint = `calc( ${movePerMillisec} * ${totalMillisec} )`;
 
   useEffect(() => {

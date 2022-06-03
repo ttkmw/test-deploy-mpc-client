@@ -1,40 +1,30 @@
 .timescale-label {
-  flex: 1;
+  flex: 1 1;
   display: flex;
-}
-
-.timescale-label__time {
-  flex: 1;
-  position: relative;
-}
-
-.timescale-label__empty {
-  width: 10px;
-  border: 1px solid #dfdfdf;
+  border: 1px solid #dce3e8;
   border-top: none;
+  border-bottom: none;
   border-left: none;
 }
 
-.timescale-label:first-child .timescale-label__time {
-  visibility: hidden;
+.timescale-label__time {
+  flex: 1 1;
+  position: relative;
 }
 
 .timescale-label__time > span {
   position: absolute;
-  top: 0;
-  right: 10px;
-  font-size: 1.4rem;
-  transform: translateY(-50%);
+  top: -.5rem;
+  right: 1rem;
+  font-size: 1.8rem;
+  color: #5b7282;
   white-space: nowrap;
 }
 
 @media screen and (max-width: 736px) {
-  .timescale-label__empty {
-    width: 8px;
-  }
-
   .timescale-label__time > span {
-    right: 6px;
-    font-size: 1.2rem;
+    top: -.2rem;
+    right: .6rem;
+    font-size: 1.33rem;
   }
 }

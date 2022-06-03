@@ -15,7 +15,7 @@ const Appointment = (props) => {
 
   const startPoint =
     +startTime.split(':')[1] === 30 ? 'calc(50% + .4rem + 1px)' : '.4rem';
-  const heightOfOneBlock = '(8rem - .8rem - 1px)';
+  const heightOfOneBlock = '(5.4rem - .8rem)';
   const rowGap = '(.8rem + 1px)';
   const totalHeight = `calc(
     ${heightOfOneBlock} * ${playTime} + ${rowGap} * ${playTime - 1}

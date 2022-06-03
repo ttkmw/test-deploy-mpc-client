@@ -1,53 +1,43 @@
 .dayscale {
   position: relative;
-  flex: 1;
-  padding: 4px;
-  border: 1px solid #dfdfdf;
+  flex: 1 1;
+  padding: .6rem 1.2rem;
+  border: 1px solid #dce3e8;
   border-top: none;
+  border-right: none;
   border-left: none;
 }
 
-.dayscale.sun {
-  color: #ff4d37;
-}
-
-.dayscale.sat {
-  color: #1570ff;
-}
-
-.dayscale__inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  row-gap: 2px;
-  width: 100%;
-  height: 6rem;
-  max-width: 5rem;
-  margin: 0 auto;
-  border-radius: 6px;
-}
-
-.dayscale.today .dayscale__inner {
-  background-color: #1570ff;
-  color: #fff;
-}
-
 .dayscale__weekday {
-  font-size: 1.2rem;
+  color: #5b7282
+}
+
+.dayscale__weekday,
+.dayscale__day {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.dayscale.sun .dayscale__weekday,
+.dayscale.sun .dayscale__day {
+  color: #ed251b;
 }
 
 .dayscale__day {
-  font-weight: 500;
-  font-size: 1.8rem;
+  margin-top: .4rem;
 }
 
 @media screen and (max-width: 736px) {
   .dayscale {
-    padding: 3px;
+    padding: .8rem .4rem;
   }
 
-  .dayscale__inner {
-    row-gap: 0;
+  .dayscale__weekday {
+    font-size: 1.66rem;
+  }
+
+  .dayscale__day {
+    margin-top: .2rem;
+    font-size: 1.33rem;
   }
 }

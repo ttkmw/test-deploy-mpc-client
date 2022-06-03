@@ -1,9 +1,7 @@
 .timetable-cell {
   position: relative;
-  flex: 1;
-  height: 12rem;
-  padding: 0.4rem;
-  border: 1px solid #dfdfdf;
+  flex: 1 1;
+  border: 1px solid #dce3e8;
   border-top: none;
   border-left: none;
 }
@@ -13,6 +11,32 @@
   top: 0;
   left: 0;
   bottom: 0;
-  border-left: 1px solid #dfdfdf;
+  border-left: 1px solid #dce3e8;
   content: '';
+}
+
+.timetable-cell__inner {
+  width: 100%;
+  min-height: 16.4rem;
+  padding: .8rem 1.2rem;
+}
+
+.timetable-cell__date {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.timetable-cell.sun .timetable-cell__date {
+  color: #ed251b
+}
+
+@media screen and (max-width: 736px) {
+  .timetable-cell__inner {
+    min-height: 12.22rem;
+    padding: .6rem .4rem;
+  }
+
+  .timetable-cell__date {
+    font-size: 1.33rem;
+  }
 }

@@ -7,11 +7,7 @@ const DayScaleWrap = (props) => {
   const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
 
   const dayScaleList = daysOfWeek.map((day, idx) => (
-    <DayScale
-      key={idx}
-      dayOfWeek={day}
-      className={idx === 0 ? 'sun' : idx === 6 ? 'sat' : ''}
-    />
+    <DayScale key={idx} dayOfWeek={day} className={idx === 0 ? 'sun' : ''} />
   ));
   return (
     <div className={classes['dayscale-wrap']}>

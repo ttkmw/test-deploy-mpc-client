@@ -1,4 +1,6 @@
 import ViewSwitcher from './ViewSwitcher/ViewSwitcher';
+import ChevronRight from '../../UI/Icons/Chevron/ChevronRight';
+import ChevronLeft from '../../UI/Icons/Chevron/ChevronLeft';
 import classes from './DateNavigator.module.css';
 
 const DateNavigator = (props) => {
@@ -54,48 +56,50 @@ const DateNavigator = (props) => {
   return (
     <div className={classes['date-navigator']}>
       <div className={classes['date-navigator__inner']}>
-        <strong className={classes['date-navigator__title']}>
-          {schedulerDate.viewState &&
-            `${
-              schedulerDate.date[0].getMonth() + 1
-            }월 ${schedulerDate.date[0].getDate()}일 - ${
-              schedulerDate.date[6].getMonth() + 1
-            }월 ${schedulerDate.date[6].getDate()}일`}
-          {!schedulerDate.viewState &&
-            `${schedulerDate.date[6].getFullYear()}년 ${
-              schedulerDate.date[6].getMonth() + 1
-            }월`}
-          <input
-            type='date'
-            value={schedulerDate.date[6].toJSON().split('T')[0]}
-            onChange={dateChangeHandler}
-            className={classes['date-navigator__input-date']}
-          />
-        </strong>
-        <div className={classes['date-navigator__buttons']}>
+        <div className={classes['date-navigator__navigation']}>
           <button
             type='button'
-            className={classes['btn--icon']}
+            className={classes['btn-navigator']}
             onClick={prevDateHandler}
           >
-            &lt;
+            <ChevronLeft />
           </button>
+          <strong className={classes['date-navigator__title']}>
+            {schedulerDate.viewState &&
+              `${
+                schedulerDate.date[0].getMonth() + 1
+              }월 ${schedulerDate.date[0].getDate()}일 - ${
+                schedulerDate.date[6].getMonth() + 1
+              }월 ${schedulerDate.date[6].getDate()}일`}
+            {!schedulerDate.viewState &&
+              `${schedulerDate.date[6].getFullYear()}년 ${
+                schedulerDate.date[6].getMonth() + 1
+              }월`}
+            <input
+              type='date'
+              value={schedulerDate.date[6].toJSON().split('T')[0]}
+              onChange={dateChangeHandler}
+              tabIndex='-1'
+              className={classes['date-navigator__input-date']}
+            />
+          </strong>
+
           <button
             type='button'
-            onClick={curDateHandler}
-            className={classes['btn--border']}
-          >
-            오늘
-          </button>
-          <button
-            type='button'
-            className={classes['btn--icon']}
+            className={classes['btn-navigator']}
             onClick={nextDateHandler}
           >
-            &gt;
+            <ChevronRight />
           </button>
-          <ViewSwitcher {...props} />
         </div>
+        <button
+          type='button'
+          onClick={curDateHandler}
+          className={classes['btn-today']}
+        >
+          오늘
+        </button>
+        <ViewSwitcher {...props} />
       </div>
     </div>
   );

@@ -7,7 +7,12 @@ const TimeTableRow = (props) => {
   const timeTableCellsList = Array(7)
     .fill()
     .map((cell, idx) => (
-      <TimeTableCell key={idx} date={daysOfWeek[idx]} {...props} />
+      <TimeTableCell
+        key={idx}
+        date={daysOfWeek[idx]}
+        className={idx === 0 ? 'sun' : ''}
+        {...props}
+      />
     ));
 
   return (

@@ -8,15 +8,35 @@
 }
 
 .date-navigator__inner {
+  position: relative;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  column-gap: 2rem;
+  column-gap: 2.2rem;
+}
+
+.date-navigator__navigation {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2.4rem;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.btn-navigator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
 }
 
 .date-navigator__title {
   position: relative;
-  flex: 0 0 24rem;
-  font-size: 2.4rem;
+  font-size: 3.2rem
 }
 
 .date-navigator__input-date[type='date'] {
@@ -37,40 +57,52 @@
   cursor: pointer;
 }
 
-.date-navigator__buttons {
-  display: flex;
-  column-gap: 2.4rem;
-}
-
-.btn--border {
-  min-width: 4rem;
-  padding: 0.2em 1em;
-  border: 1px solid #dce3e8;
-  border-radius: 4px;
-  font-size: 1.2rem;
-}
-
-.btn--icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.btn-today {
+  min-width: 5.2rem;
+  padding: .2em .4em;
+  border: 1px solid #c1ccd6;
+  border-radius: .8rem;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 736px) {
   .date-navigator {
     height: 5rem;
+    padding: 0 4vw;
+  }
+
+  .date-navigator__inner {
+    justify-content: space-between;
+  }
+
+  .date-navigator__navigation {
+    column-gap: 2.2rem;
   }
 
   .date-navigator__title {
-    flex-basis: 13rem;
     font-size: 2rem;
   }
 
-  .date-navigator__buttons {
-    column-gap: 2rem;
+  .btn-today {
+    min-width: 4.5rem;
+    font-weight: 600;
+    font-size: 1.44rem;
+  }
+}
+
+
+@media screen and (max-width: 374px) {
+  .date-navigator__navigation {
+    column-gap: 1.2rem;
   }
 
-  .btn--border {
-    font-size: 1rem;
+  .date-navigator__title {
+    font-size: 1.8rem;
+  }
+
+  .btn-today {
+    min-width: 4rem;
+    font-size: 1.22rem;
   }
 }
