@@ -10,7 +10,7 @@ const TimeTableRow = (props) => {
       <TimeTableCell
         key={idx}
         date={daysOfWeek[idx]}
-        className={idx === 0 ? 'sun' : ''}
+        isSunday={idx === 0}
         {...props}
       />
     ));

@@ -26,6 +26,10 @@ const TimeTableLayout = (props) => {
     .map((row, idx) => (
       <TimeTableRow
         key={idx}
+        timeSlot={schedulerDate.date.map(
+          (date) =>
+            new Date(date.getFullYear(), date.getMonth(), date.getDate(), idx)
+        )}
         appointmentsList={filterdAppointments[idx]}
         {...props}
       />

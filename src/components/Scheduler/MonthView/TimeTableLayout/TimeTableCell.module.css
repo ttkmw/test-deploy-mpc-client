@@ -21,6 +21,14 @@
   padding: .8rem 1.2rem;
 }
 
+.timetable-cell.today .timetable-cell__inner {
+  background-color: #f2f5f7;
+}
+
+.timetable-cell.blur .timetable-cell__inner {
+  opacity: .3;
+}
+
 .timetable-cell__date {
   font-size: 1.8rem;
   text-align: center;

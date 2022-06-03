@@ -10,3 +10,7 @@
   height: 5.4rem;
   padding: .4rem;
 }
+
+.timetable-cell.today .timetable-cell__inner {
+  background-color: #f2f5f7;
+}
