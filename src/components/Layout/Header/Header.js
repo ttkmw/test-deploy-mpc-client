@@ -1,21 +1,19 @@
-import HeaderUtilityButton from './HeaderUtilityButton';
+import HeaderHamburgerBtn from './HeaderHamburgerBtn';
+import HeaderUtilityBtn from './HeaderUtilityBtn';
+import HeaderLogo from './HeaderLogo';
 import classes from './Header.module.css';
 
 const Header = () => {
   return (
     <header className={classes.header}>
       <div className={classes['header__inner']}>
+        <HeaderHamburgerBtn />
         <h1 className={classes['header__logo']}>
           <a href='/'>
-            <img
-              src='https://plab-football.s3.amazonaws.com/static/img/logo.svg'
-              alt='플랩풋볼'
-            />
+            <HeaderLogo />
           </a>
         </h1>
-        <HeaderUtilityButton className={classes['header__btn-utility']}>
-          사용자
-        </HeaderUtilityButton>
+        <HeaderUtilityBtn />
       </div>
     </header>
   );

@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import Header from './components/Layout/Header';
+import Header from './components/Layout/Header/Header';
 import BodyContainer from './components/Layout/BodyContainer';
 import Scheduler from './components/Scheduler/Scheduler';
 import WeekView from './components/Scheduler/WeekView/WeekView';

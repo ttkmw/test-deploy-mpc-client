@@ -1,0 +1,14 @@
+.utility-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.125rem;
+  height: 2.125rem;
+}
+
+@media screen and (max-width: 736px) {
+  .utility-btn {
+    width: 2.1667rem;
+    height: 2.1667rem;
+  }
+}

@@ -1,4 +1,10 @@
 .body-container {
   height: 100%;
-  padding-top: 6.4rem;
+  padding-top: 4.5rem;
+}
+
+@media screen and (max-width: 736px) {
+  .body-container {
+    padding-top: 3.6667rem;
+  }
 }
