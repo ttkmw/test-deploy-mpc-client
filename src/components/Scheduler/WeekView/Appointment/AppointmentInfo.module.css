@@ -1,0 +1,64 @@
+.appointment-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: 700;
+  text-align: center;
+}
+
+.appointment-info.one-hour {
+  flex-direction: row;
+}
+
+.appointment-info__time {
+  font-size: 0.875rem;
+}
+
+.appointment-info__consumer {
+  line-height: 1.3222;
+}
+
+.appointment-info:not(.one-hour) .appointment-info__consumer {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.appointment-info.one-hour .appointment-info__consumer {
+  overflow: hidden;
+  margin-left: 0.3333em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1024px) {
+  .appointment-info__time--tilde {
+    line-height: 0.5555;
+    display: block;
+  }
+
+  .appointment-info.one-hour .appointment-info__consumer {
+    display: none;
+  }
+
+  .appointment-info.one-hour-half .appointment-info__consumer {
+    -webkit-line-clamp: 1;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .appointment-info__time,
+  .appointment-info__consumer {
+    font-size: 0.8333rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .appointment-info__consumer {
+    word-break: break-all;
+  }
+}

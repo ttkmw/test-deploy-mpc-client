@@ -1,3 +1,4 @@
+import AppointmentInfo from './AppointmentInfo';
 import classes from './Appointment.module.css';
 
 const Appointment = (props) => {
@@ -14,9 +15,9 @@ const Appointment = (props) => {
     60;
 
   const startPoint =
-    +startTime.split(':')[1] === 30 ? 'calc(50% + .4rem + 1px)' : '.4rem';
-  const heightOfOneBlock = '(5.4rem - .8rem)';
-  const rowGap = '(.8rem + 1px)';
+    +startTime.split(':')[1] === 30 ? 'calc(50% + .25rem + 1px)' : '.25rem';
+  const heightOfOneBlock = '(54px - .5rem)';
+  const rowGap = '(.5rem + 1px)';
   const totalHeight = `calc(
     ${heightOfOneBlock} * ${playTime} + ${rowGap} * ${playTime - 1}
   )`;
@@ -24,12 +25,13 @@ const Appointment = (props) => {
   return (
     <div
       className={classes['appointment']}
+      data-product-type={appointment.productType}
       style={{
         top: startPoint,
         height: totalHeight,
       }}
     >
-      {appointment.productType}
+      <AppointmentInfo {...props} playTime={playTime} />
     </div>
   );
 };

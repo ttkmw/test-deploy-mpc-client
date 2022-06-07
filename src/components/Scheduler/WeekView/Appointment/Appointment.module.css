@@ -1,28 +1,105 @@
 .appointment {
   position: absolute;
-  top: .4rem;
-  right: .4rem;
-  left: .4rem;
+  top: 0.25rem;
+  right: 0.25rem;
+  left: 0.25rem;
   z-index: 10;
   height: 100%;
-  padding: .2em .4em;
-  border-radius: 3px;
-  background-color: #ffc001;
-  color: #2e2e2e;
-  font-size: 1.4rem;
-  text-align: center;
+  padding: 0.4em 0.6666em;
+  border: 1px solid #c1ccd6;
+  border-radius: 1rem;
+  background-color: #fff;
+  color: #3e5463;
+  font-size: 0.9375rem;
   cursor: pointer;
 }
 
 .appointment::before {
   position: absolute;
-  inset: calc(-.4rem - .5px);
+  inset: calc(-0.25rem - 1px);
   background-color: transparent;
   content: '';
 }
 
+.appointment:not([data-product-type='예약불가'], [data-product-type='예약가능']) {
+  padding: 0.4em 0.6666em 0.4em calc(0.6666em + 0.625rem);
+}
+
+.appointment:not([data-product-type='예약가능']) {
+  border: none;
+}
+
+.appointment:not([data-product-type='예약불가'], [data-product-type='예약가능'])::after {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  clip: rect(0 0.625rem auto 0);
+  content: '';
+}
+
+.appointment[data-product-type='구장직접'] {
+  background-color: #e9faff;
+  color: #2139b2;
+}
+
+.appointment[data-product-type='구장직접']::after {
+  background-color: #2139b2;
+}
+
+.appointment[data-product-type='소셜매치'] {
+  background-color: #fff5ba;
+  color: #542d19;
+}
+
+.appointment[data-product-type='소셜매치']::after {
+  background-color: #fed014;
+}
+
+.appointment[data-product-type='플랩대관'] {
+  background-color: #ffe4c3;
+  color: #542d19;
+}
+
+.appointment[data-product-type='플랩대관']::after {
+  background-color: #ff7561;
+}
+
+.appointment[data-product-type='아카데미'] {
+  background-color: #f0ffd4;
+  color: #0a623d;
+}
+
+.appointment[data-product-type='아카데미']::after {
+  background-color: #00a466;
+}
+
+.appointment[data-product-type='장기대관'] {
+  background-color: #f3e9ff;
+  color: #952da7;
+}
+
+.appointment[data-product-type='장기대관']::after {
+  background-color: #952da7;
+}
+
+.appointment[data-product-type='예약불가'] {
+  background-color: #dce3e8;
+}
+
+.appointment[data-product-type='예약가능'] {
+  border: 1px dashed #c1ccd6;
+}
+
 @media screen and (max-width: 736px) {
   .appointment {
-    font-size: 1.2rem;
+    border-radius: 0.6667rem;
+  }
+
+  .appointment:not([data-product-type='예약불가'], [data-product-type='예약가능']) {
+    padding: 0.1667em 0.3333em;
+  }
+
+  .appointment:not([data-product-type='예약불가'], [data-product-type='예약가능'])::after {
+    display: none;
   }
 }
