@@ -1,0 +1,28 @@
+.appointment {
+  position: relative;
+}
+
+.appointment + .appointment {
+  margin-top: 0.625rem;
+}
+
+.appointment::after {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0.1538em 0.3076em;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  content: '\00a0';
+}
+
+@media screen and (max-width: 736px) {
+  .appointment + .appointment {
+    margin-top: 0.3333rem;
+  }
+
+  .appointment::after {
+    padding: 0.1667em 0.3333em;
+    font-size: 0.8333rem;
+  }
+}

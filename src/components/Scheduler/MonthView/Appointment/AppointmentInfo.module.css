@@ -1,0 +1,107 @@
+.appointment-info {
+  position: absolute;
+  inset: 0;
+}
+
+.appointment-info__inner {
+  display: flex;
+  column-gap: 5px;
+  width: fit-content;
+  padding: 0.1538em 0.3076em 0.1538em calc(0.3076em + 0.25rem);
+  border-radius: 0.25rem;
+  background-color: #fff;
+  color: #3e5463;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+.appointment-info__consumer {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.appointment-info__inner::after {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.25rem;
+  background-color: #c1ccd6;
+  clip: rect(0 0.25rem auto 0);
+  content: '';
+}
+
+.appointment-info[data-product-type='구장직접'] .appointment-info__inner {
+  background-color: #e9faff;
+  color: #2139b2;
+}
+
+.appointment-info[data-product-type='구장직접']
+  .appointment-info__inner::after {
+  background-color: #2139b2;
+}
+
+.appointment-info[data-product-type='소셜매치'] .appointment-info__inner {
+  background-color: #fff5ba;
+  color: #542d19;
+}
+
+.appointment-info[data-product-type='소셜매치']
+  .appointment-info__inner::after {
+  background-color: #fed014;
+}
+
+.appointment-info[data-product-type='플랩대관'] .appointment-info__inner {
+  background-color: #ffe4c3;
+  color: #542d19;
+}
+
+.appointment-info[data-product-type='플랩대관']
+  .appointment-info__inner::after {
+  background-color: #ff7561;
+}
+
+.appointment-info[data-product-type='아카데미'] .appointment-info__inner {
+  background-color: #f0ffd4;
+  color: #0a623d;
+}
+
+.appointment-info[data-product-type='아카데미']
+  .appointment-info__inner::after {
+  background-color: #00a466;
+}
+
+.appointment-info[data-product-type='장기대관'] .appointment-info__inner {
+  background-color: #f3e9ff;
+  color: #952da7;
+}
+
+.appointment-info[data-product-type='장기대관']
+  .appointment-info__inner::after {
+  background-color: #952da7;
+}
+
+@media screen and (max-width: 1024px) {
+  .appointment-info__consumer {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .appointment-info__inner {
+    padding: 0.1667em 0.3333em;
+    border-radius: 0.333rem;
+    font-size: 0.8333rem;
+  }
+
+  .appointment-info__inner::after {
+    display: none;
+  }
+
+  .appointment-info__time--end-time,
+  .appointment-info__time--tilde {
+    display: none;
+  }
+}
