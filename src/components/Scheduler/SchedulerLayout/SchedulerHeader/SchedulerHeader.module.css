@@ -1,13 +1,7 @@
 .scheduler-header {
   position: sticky;
-  top: 6rem;
+  top: 3.125rem;
   z-index: 70;
   width: 100%;
   background-color: #fff;
-}
-
-@media screen and (max-width: 736px) {
-  .scheduler-header {
-    top: 5rem;
-  }
 }

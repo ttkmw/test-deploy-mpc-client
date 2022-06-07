@@ -7,8 +7,8 @@
 }
 
 .timetable-cell__inner {
-  height: 5.4rem;
-  padding: .4rem;
+  height: 54px;
+  padding: 0.25rem;
 }
 
 .timetable-cell.today .timetable-cell__inner {

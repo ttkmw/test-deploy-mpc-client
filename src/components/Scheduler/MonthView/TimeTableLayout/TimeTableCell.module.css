@@ -16,9 +16,12 @@
 }
 
 .timetable-cell__inner {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  min-height: 16.4rem;
-  padding: .8rem 1.2rem;
+  height: 100%;
+  min-height: 10.25rem;
+  padding: 0.4em 0.6666em;
 }
 
 .timetable-cell.today .timetable-cell__inner {
@@ -26,25 +29,25 @@
 }
 
 .timetable-cell.blur .timetable-cell__inner {
-  opacity: .3;
+  opacity: 0.3;
 }
 
 .timetable-cell__date {
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   text-align: center;
 }
 
 .timetable-cell.sun .timetable-cell__date {
-  color: #ed251b
+  color: #ed251b;
 }
 
 @media screen and (max-width: 736px) {
   .timetable-cell__inner {
-    min-height: 12.22rem;
-    padding: .6rem .4rem;
+    min-height: 9.1667rem;
+    padding: 0.1667em 0.3333em;
   }
 
   .timetable-cell__date {
-    font-size: 1.33rem;
+    font-size: 1rem;
   }
 }

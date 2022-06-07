@@ -7,7 +7,7 @@ const DayScale = (props) => {
     <div
       className={`${classes['dayscale']} ${className && classes[className]}`}
     >
-      <div className={classes['dayscale__day']}>{dayOfWeek}</div>
+      <div className={classes['dayscale__weekday']}>{dayOfWeek}</div>
     </div>
   );
 };

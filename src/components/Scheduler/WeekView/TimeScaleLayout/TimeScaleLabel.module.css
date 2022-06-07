@@ -14,17 +14,21 @@
 
 .timescale-label__time > span {
   position: absolute;
-  top: -.5rem;
-  right: 1rem;
-  font-size: 1.8rem;
+  top: -0.1rem;
+  right: 0.625rem;
   color: #5b7282;
+  font-size: 1.125rem;
   white-space: nowrap;
+}
+
+@media screen and (max-width: 1024px) {
+  .timescale-label__time > span {
+    font-size: 1.0714rem;
+  }
 }
 
 @media screen and (max-width: 736px) {
   .timescale-label__time > span {
-    top: -.2rem;
-    right: .6rem;
-    font-size: 1.33rem;
+    font-size: 1rem;
   }
 }

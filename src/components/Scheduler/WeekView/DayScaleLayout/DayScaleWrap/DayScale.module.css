@@ -1,7 +1,7 @@
 .dayscale {
   position: relative;
   flex: 1 1;
-  padding: .6rem 1.2rem;
+  padding: 0.4em 0.6666em;
   border: 1px solid #dce3e8;
   border-top: none;
   border-right: none;
@@ -9,12 +9,12 @@
 }
 
 .dayscale__weekday {
-  color: #5b7282
+  color: #5b7282;
 }
 
 .dayscale__weekday,
 .dayscale__day {
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   text-align: center;
 }
 
@@ -24,20 +24,31 @@
 }
 
 .dayscale__day {
-  margin-top: .4rem;
+  margin-top: 0.4rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .dayscale__weekday,
+  .dayscale__day {
+    font-size: 1.0714rem;
+  }
+
+  .dayscale__day {
+    margin-top: 0.3rem;
+  }
 }
 
 @media screen and (max-width: 736px) {
   .dayscale {
-    padding: .8rem .4rem;
+    padding: 0.1667em 0.3333em;
   }
 
   .dayscale__weekday {
-    font-size: 1.66rem;
+    font-size: 1.25rem;
   }
 
   .dayscale__day {
-    margin-top: .2rem;
-    font-size: 1.33rem;
+    font-size: 1rem;
+    margin-top: 0.1667rem;
   }
 }
