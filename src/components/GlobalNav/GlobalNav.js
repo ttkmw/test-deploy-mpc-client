@@ -1,19 +1,27 @@
-import { Fragment } from 'react';
-
-import Branches from './Branches';
+import StadiumSelect from './StadiumSelect/StadiumSelect';
+import ZoneList from './ZoneList';
 import classes from './GlobalNav.module.css';
 
 const GlobalNav = () => {
   return (
-    <Fragment>
-      <div className={classes['search-bar']}>
-        <input type='search' />
+    <nav className={classes.nav}>
+      <header className={classes['nav__header']}>
+        <div className={classes['nav__header-inner']}>
+          <StadiumSelect />
+        </div>
+      </header>
+      <div className={classes['nav__body']}>
+        <ZoneList />
       </div>
-      <nav className={classes.nav}>
-        <strong className={classes['nav__title']}>구장 관리</strong>
-        <Branches />
-      </nav>
-    </Fragment>
+      <div className={classes['nav__footer']}>
+        <div className={classes['dayofweek-switcher']}>
+          <strong>한주의 시작을 월요일로</strong>
+        </div>
+        <div className={classes['user-info']}>
+          <strong>계정 설정</strong>
+        </div>
+      </div>
+    </nav>
   );
 };
 

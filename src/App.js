@@ -6,6 +6,8 @@ import Scheduler from './components/Scheduler/Scheduler';
 import WeekView from './components/Scheduler/WeekView/WeekView';
 import MonthView from './components/Scheduler/MonthView/MonthView';
 import DateNavigator from './components/Scheduler/DateNavigator/DateNavigator';
+import Aside from './components/Layout/Aside/Aside';
+import GlobalNav from './components/GlobalNav/GlobalNav';
 
 import { appointments } from './dummy-data/appointments';
 
@@ -25,6 +27,9 @@ const App = () => {
             <MonthView />
           </Scheduler>
         </main>
+        <Aside>
+          <GlobalNav />
+        </Aside>
       </BodyContainer>
     </Fragment>
   );

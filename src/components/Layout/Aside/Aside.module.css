@@ -1,0 +1,70 @@
+.aside {
+  overflow: hidden;
+  visibility: hidden;
+  position: fixed;
+  top: 4.5rem;
+  left: 0;
+  z-index: 110;
+  width: 21.875rem;
+  height: calc(100% - 4.5rem);
+  max-height: 40.625rem;
+  border-radius: 1.875rem;
+  background-color: #fff;
+  box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px,
+    rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
+  transform: translateX(-100%);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s;
+}
+
+.aside-container.active .aside {
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.hamburger-btn {
+  position: fixed;
+  top: 1.438rem;
+  left: 2.5rem;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.625rem;
+  height: 1.625rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .hamburger-btn {
+    left: 2.4414vw;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .aside {
+    top: 3.6667rem;
+    bottom: 0;
+    width: 23.3333rem;
+    height: calc(100% - 3.6667rem);
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .aside-container::after {
+    visibility: hidden;
+    position: fixed;
+    inset: 3.6667rem 0 0;
+    z-index: 100;
+    transition: background-color 0.25s, visibility 0.25s;
+    content: '';
+  }
+
+  .aside-container.active::after {
+    visibility: visible;
+    background-color: rgba(15, 15, 15, 0.3);
+  }
+
+  .hamburger-btn {
+    top: 1.0333rem;
+  }
+}

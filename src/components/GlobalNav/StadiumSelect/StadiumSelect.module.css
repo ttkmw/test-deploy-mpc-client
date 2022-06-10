@@ -1,0 +1,30 @@
+.stadium-select {
+  position: relative;
+}
+
+.stadium-select__select {
+  width: 100%;
+  padding-right: 1.5rem;
+  border: none;
+  font-weight: 700;
+  font-size: 1.125rem;
+  white-space: normal;
+}
+
+.stadium-select__select--icon {
+  position: absolute;
+  top: 0.1875rem;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  transform: rotate(-90deg);
+}
+
+@media screen and (max-width: 736px) {
+  .stadium-select__select {
+    font-size: 1.25rem;
+  }
+}

@@ -1,0 +1,17 @@
+.zone-list__item {
+  font-size: 0.9375rem;
+}
+
+.zone-list__item + .zone-list__item {
+  margin-top: 1.875rem;
+}
+
+.zone-list__item--link {
+  display: inline-block;
+}
+
+@media screen and (max-width: 736px) {
+  .zone-list__item {
+    font-size: 1rem;
+  }
+}
