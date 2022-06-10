@@ -11,7 +11,7 @@ const InputRadio = (props) => {
         {...props.attribute}
         className={classes['input--radio']}
       />
-      {props.children}
+      <span className={classes['input--radio--text']}>{props.children}</span>
     </label>
   );
 };

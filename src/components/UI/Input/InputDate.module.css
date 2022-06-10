@@ -3,23 +3,24 @@
   width: 100%;
 }
 
-.form-control--date__input:focus + .form-control--date__txt {
+.form-control--date__input:focus + .form-control--date__text {
   border-color: #0071e3;
   outline: 3px solid rgba(0, 125, 250, 0.6);
   outline-offset: 0;
 }
 
-.form-control--date__txt {
+.form-control--date__text {
   width: 100%;
-  height: 5.4rem;
-  padding: 0.5rem 1.5rem;
+  height: 3.375rem;
+  padding: 0.6667em 1em;
   border: 1px solid #dce3e8;
-  border-radius: 1.6rem;
+  border-radius: 1rem;
   background-color: #fafafa;
   color: #222836;
+  font-size: 0.9375rem;
 }
 
-.form-control--date__txt.empty {
+.form-control--date__text.empty {
   color: #9fb1bd;
 }
 
@@ -40,4 +41,13 @@
   height: 100%;
   background: transparent;
   cursor: pointer;
+}
+
+.form-control--date__input:disabled {
+  cursor: no-drop;
+}
+
+.form-control--date__input:disabled + .form-control--date__text {
+  background-color: #f2f5f7;
+  color: #9fb1bd;
 }

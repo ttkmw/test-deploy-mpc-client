@@ -41,7 +41,7 @@ const InputDate = (props) => {
         readOnly
         tabIndex='-1'
         {...props.attribute}
-        className={`${classes['form-control--date__txt']} ${
+        className={`${classes['form-control--date__text']} ${
           dateTxt === '' ? classes.empty : ''
         }`}
       />

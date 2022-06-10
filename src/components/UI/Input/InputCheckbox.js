@@ -11,7 +11,7 @@ const InputCheckbox = (props) => {
         {...props.attribute}
         className={classes['input--checkbox']}
       />
-      <span>{props.children}</span>
+      <span className={classes['input--checkbox--text']}>{props.children}</span>
     </label>
   );
 };

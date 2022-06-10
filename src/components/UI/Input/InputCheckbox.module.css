@@ -7,8 +7,8 @@
 }
 
 .input--checkbox {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 2.1875rem;
+  height: 2.1875rem;
   border-radius: 50%;
   background-color: #fafafa;
 }
@@ -17,12 +17,17 @@
   background-color: #1570ff;
 }
 
-.input--checkbox + span {
+.input--checkbox--text {
   position: absolute;
-  font-size: 1.3rem;
+  font-size: 0.8125rem;
   color: #9fb1bd;
 }
 
-.input--checkbox:checked + span {
+.input--checkbox:checked + .input--checkbox--text {
   color: #fff;
+}
+
+.input--checkbox:checked:disabled,
+.input--checkbox:checked:disabled + .input--checkbox--text {
+  cursor: no-drop;
 }
