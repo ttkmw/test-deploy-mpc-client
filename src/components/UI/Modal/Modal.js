@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
+import Xmark from '../Icons/Bars/Xmark';
 import classes from './Modal.module.css';
 
 const Backdrop = (props) => {
@@ -11,13 +12,17 @@ const ModalOverlay = (props) => {
   return (
     <Fragment>
       <Backdrop onClose={props.onClose} />
-      <section
-        className={classes.modal}
-        onClick={(evt) => evt.stopPropagation()}
-      >
+      <section className={classes.modal}>
         <header className={classes['modal__header']}>
           <div className={classes['modal__header-inner']}>
             <h2 className={classes['modal__title']}>{props.title}</h2>
+            <button
+              type='button'
+              className={classes['modal__close-btn']}
+              onClick={props.onClose}
+            >
+              <Xmark />
+            </button>
           </div>
         </header>
         <div className={classes['modal__body']}>{props.children}</div>
