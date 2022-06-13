@@ -1,37 +1,21 @@
-import { Fragment } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
-import Header from './components/Layout/Header/Header';
-import BodyContainer from './components/Layout/BodyContainer';
-import Scheduler from './components/Scheduler/Scheduler';
-import WeekView from './components/Scheduler/WeekView/WeekView';
-import MonthView from './components/Scheduler/MonthView/MonthView';
-import DateNavigator from './components/Scheduler/DateNavigator/DateNavigator';
-import Aside from './components/Layout/Aside/Aside';
-import GlobalNav from './components/GlobalNav/GlobalNav';
-
-import { appointments } from './dummy-data/appointments';
+import LogIn from './Pages/LogIn/LogIn';
+import Calendar from './Pages/Calendar/Calendar';
 
 const App = () => {
   return (
-    <Fragment>
-      <Header />
-      <BodyContainer>
-        <main>
-          <Scheduler data={appointments}>
-            <DateNavigator />
-            <WeekView
-              startDayHour={0}
-              endDayHour={24}
-              // excludedDays={[0, 6]}
-            />
-            <MonthView />
-          </Scheduler>
-        </main>
-        <Aside>
-          <GlobalNav />
-        </Aside>
-      </BodyContainer>
-    </Fragment>
+    <Switch>
+      <Route path='/' exact>
+        <Redirect to='/login' />
+      </Route>
+      <Route path='/login'>
+        <LogIn />
+      </Route>
+      <Route path='/calendar/:zoneId'>
+        <Calendar />
+      </Route>
+    </Switch>
   );
 };
 
