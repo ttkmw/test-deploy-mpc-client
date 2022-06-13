@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
 
 import LogInLogo from './LogInLogo';
 import InputText from '../../components/UI/Input/InputText';
@@ -8,12 +8,44 @@ const LogIn = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const submitHandler = (evt) => {
     evt.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-    console.log(enteredEmail, enteredPassword);
+
+    setIsLoading(true);
+
+    fetch('https://dev.plab.so/auth/signIn', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: enteredEmail,
+        password: enteredPassword,
+        rememberMe: false,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        setIsLoading(false);
+
+        if (res.ok) {
+          return res.json();
+        }
+
+        return res.json().then((data) => {
+          throw new Error(data.message);
+        });
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   };
 
   return (
@@ -39,6 +71,7 @@ const LogIn = () => {
         <button type='submit' className={classes['login-form__btn--submit']}>
           로그인
         </button>
+        {isLoading && <p>로그인 중...</p>}
       </form>
     </section>
   );
