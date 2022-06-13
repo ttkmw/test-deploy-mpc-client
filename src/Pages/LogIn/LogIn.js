@@ -2,11 +2,14 @@ import { useState, useRef, useContext } from 'react';
 
 import LogInLogo from './LogInLogo';
 import InputText from '../../components/UI/Input/InputText';
+import AuthContext from '../../store/auth-context';
 import classes from './LogIn.module.css';
 
 const LogIn = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+
+  const authCtx = useContext(AuthContext);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,7 +26,6 @@ const LogIn = () => {
       body: JSON.stringify({
         email: enteredEmail,
         password: enteredPassword,
-        rememberMe: false,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +43,7 @@ const LogIn = () => {
         });
       })
       .then((data) => {
-        console.log(data);
+        authCtx.login(data.accessToken);
       })
       .catch((err) => {
         alert(err.message);
@@ -71,8 +73,8 @@ const LogIn = () => {
         <button type='submit' className={classes['login-form__btn--submit']}>
           로그인
         </button>
-        {isLoading && <p>로그인 중...</p>}
       </form>
+      {isLoading && <p>로그인 중...</p>}
     </section>
   );
 };
