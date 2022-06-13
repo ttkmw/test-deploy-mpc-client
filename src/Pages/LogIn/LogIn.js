@@ -1,4 +1,5 @@
 import { useState, useRef, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import LogInLogo from './LogInLogo';
 import InputText from '../../components/UI/Input/InputText';
@@ -6,6 +7,7 @@ import AuthContext from '../../store/auth-context';
 import classes from './LogIn.module.css';
 
 const LogIn = () => {
+  const history = useHistory();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -44,6 +46,7 @@ const LogIn = () => {
       })
       .then((data) => {
         authCtx.login(data.accessToken);
+        history.replace('/calendar/1');
       })
       .catch((err) => {
         alert(err.message);
