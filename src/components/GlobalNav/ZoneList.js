@@ -1,30 +1,21 @@
+import { NavLink } from 'react-router-dom';
 import classes from './ZoneList.module.css';
 
-const DUMMY_ZONE = [
-  {
-    id: Math.random(),
-    name: 'HM풋살파크 일산점 1구역',
-  },
-  {
-    id: Math.random(),
-    name: 'HM풋살파크 일산점 2구역',
-  },
-  {
-    id: Math.random(),
-    name: 'HM풋살파크 일산점 3구역',
-  },
-];
+const ZoneList = (props) => {
+  const { zoneList } = props;
 
-const ZoneList = () => {
-  const zoneList = DUMMY_ZONE.map((zone) => (
+  const zoneItems = zoneList.map((zone) => (
     <li key={zone.id} className={classes['zone-list__item']}>
-      <a href='#;' className={classes['zone-list__item--link']}>
+      <NavLink
+        to={`/calendar/${zone.id}`}
+        className={classes['zone-list__item--link']}
+      >
         {zone.name}
-      </a>
+      </NavLink>
     </li>
   ));
 
-  return <ul className={classes['zone-list']}>{zoneList}</ul>;
+  return <ul className={classes['zone-list']}>{zoneItems}</ul>;
 };
 
 export default ZoneList;

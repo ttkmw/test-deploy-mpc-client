@@ -1,5 +1,7 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
+import AuthContext from '../../store/auth-context';
 import classes from './Scheduler.module.css';
 
 const getFirstDayOfWeek = (curDate) => {
@@ -57,6 +59,18 @@ const getDaysOfMonth = (firstDayOfWeek, curDate) => {
   }
 
   return daysOfMonth;
+};
+
+const adjDateFormat = (dateObj) => {
+  let ISODateFormat;
+
+  ISODateFormat = `${dateObj.getFullYear()}-${
+    dateObj.getMonth() < 9
+      ? `0${dateObj.getMonth() + 1}`
+      : dateObj.getMonth() + 1
+  }-${dateObj.getDate() < 10 ? `0${dateObj.getDate()}` : dateObj.getDate()}`;
+
+  return ISODateFormat;
 };
 
 const schedulerDateReducer = (state, action) => {
@@ -157,6 +171,8 @@ const schedulerDateReducer = (state, action) => {
 };
 
 const Scheduler = (props) => {
+  const params = useParams();
+  const authCtx = useContext(AuthContext);
   const { defaultCurrentDate = new Date() } = props;
 
   const [schedulerDate, dispatchSchedulerDate] = useReducer(
@@ -169,6 +185,33 @@ const Scheduler = (props) => {
       ),
     }
   );
+  const [appointments, setAppointments] = useState([]);
+
+  useEffect(() => {
+    const startDate = adjDateFormat(schedulerDate.date[0]);
+    const endDate = adjDateFormat(
+      schedulerDate.date[schedulerDate.date.length - 1]
+    );
+
+    if (+params.zoneId) {
+      fetch(
+        `https://dev.plab.so/products?startDate=${startDate}&endDate=${endDate}&zoneId=${params.zoneId}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authCtx.token}`,
+          },
+        }
+      )
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setAppointments(data.products);
+        });
+    }
+  }, [authCtx.token, schedulerDate.date, params.zoneId]);
 
   const addPropsToReactElement = (element, props) => {
     if (React.isValidElement(element)) {
@@ -201,6 +244,7 @@ const Scheduler = (props) => {
       {addPropsToChildren(props.children, {
         ...props,
         schedulerDate,
+        data: appointments,
         onChangeSchedulerDate: dispatchSchedulerDate,
       })}
     </div>

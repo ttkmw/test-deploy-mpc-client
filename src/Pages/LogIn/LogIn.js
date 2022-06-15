@@ -46,7 +46,7 @@ const LogIn = () => {
       })
       .then((data) => {
         authCtx.login(data.accessToken, data.expiresDateTime);
-        history.replace('/calendar/1');
+        history.replace('/calendar/0');
       })
       .catch((err) => {
         alert(err.message);

@@ -10,10 +10,10 @@ const AppointmentInfo = (props) => {
     >
       <div className={classes['appointment-info__inner']}>
         <div className={classes['appointment-info__time']}>
-          {appointmentInfo.time.startTime.split('T')[1]}
+          {appointmentInfo.time.startTime.split('T')[1].slice(0, 5)}
           <span className={classes['appointment-info__time--tilde']}>~</span>
           <span className={classes['appointment-info__time--end-time']}>
-            {appointmentInfo.time.endTime.split('T')[1]}
+            {appointmentInfo.time.endTime.split('T')[1].slice(0, 5)}
           </span>
         </div>
         <div className={classes['appointment-info__consumer']}>

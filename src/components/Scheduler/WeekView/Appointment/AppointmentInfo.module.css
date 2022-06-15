@@ -41,7 +41,7 @@
     display: block;
   }
 
-  .appointment-info.one-hour .appointment-info__consumer {
+  .appointment-info.one-hour .appointment-info__consumer:not(.non-blocking) {
     display: none;
   }
 
@@ -60,5 +60,11 @@
 @media screen and (max-width: 520px) {
   .appointment-info__consumer {
     word-break: break-all;
+  }
+
+  .appointment-info.one-hour .appointment-info__consumer.non-blocking {
+    margin-left: 0;
+    white-space: normal;
+    text-overflow: initial;
   }
 }
