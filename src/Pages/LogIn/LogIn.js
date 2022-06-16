@@ -45,7 +45,11 @@ const LogIn = () => {
         });
       })
       .then((data) => {
-        authCtx.login(data.accessToken, data.expiresDateTime);
+        authCtx.login(
+          data.accessToken,
+          data.expiresDateTime,
+          data.roleNames[0]
+        );
         history.replace('/calendar/0');
       })
       .catch((err) => {
