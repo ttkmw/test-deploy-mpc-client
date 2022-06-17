@@ -50,7 +50,7 @@ const LogIn = () => {
           data.expiresDateTime,
           data.roleNames[0]
         );
-        history.replace('/calendar/0');
+        history.replace('/calendar');
       })
       .catch((err) => {
         alert(err.message);

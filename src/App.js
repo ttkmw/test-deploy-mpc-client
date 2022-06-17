@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Route, Switch, Redirect, useParams } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import LogIn from './Pages/LogIn/LogIn';
 import Calendar from './Pages/Calendar/Calendar';
@@ -7,17 +7,21 @@ import AuthContext from './store/auth-context';
 
 const App = () => {
   const authCtx = useContext(AuthContext);
-  const params = useParams();
 
   return (
     <Switch>
       <Route path='/' exact>
         {!authCtx.isLoggedIn && <Redirect to='/login' />}
-        {authCtx.isLoggedIn && <Redirect to={`/calendar/${params.zoneId}`} />}
+        {authCtx.isLoggedIn && <Redirect to='/calendar' />}
       </Route>
       {!authCtx.isLoggedIn && (
-        <Route path='/login'>
+        <Route path='/login' exact>
           <LogIn />
+        </Route>
+      )}
+      {authCtx.isLoggedIn && (
+        <Route path='/calendar' exact>
+          <Calendar />
         </Route>
       )}
       {authCtx.isLoggedIn && (
