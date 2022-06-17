@@ -2,17 +2,17 @@ import ChevronLeft from '../../Icons/Chevron/ChevronLeft';
 import classes from './Select.module.css';
 
 const Select = (props) => {
-  const { placeholder = null, className } = props;
+  const { attribute, placeholder = '' } = props;
 
   return (
     <div className={classes['form-control--select']}>
       <select
-        {...props.attribute}
         className={`${classes['form-control--select__select']} ${
-          placeholder ? classes['has-placeholder'] : ''
+          attribute.value === '' ? classes['has-placeholder'] : ''
         }`}
+        {...attribute}
       >
-        {placeholder && (
+        {attribute.value === '' && (
           <option value='' disabled hidden>
             {placeholder}
           </option>

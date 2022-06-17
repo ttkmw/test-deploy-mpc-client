@@ -10,6 +10,8 @@
 }
 
 .form-control--date__text {
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 3.375rem;
   padding: 0.6667em 1em;

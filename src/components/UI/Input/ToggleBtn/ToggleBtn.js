@@ -1,16 +1,14 @@
 import classes from './ToggleBtn.module.css';
 
 const ToggleBtn = (props) => {
+  const { attribute } = props;
+
   return (
-    <label
-      htmlFor={props.attribute.id}
-      className={classes['input--label-toggle']}
-    >
+    <label htmlFor={attribute.id} className={classes['input--label-toggle']}>
       <input
         type='checkbox'
-        onClick={props.onClick}
         className={classes['input--toggle']}
-        {...props.attribute}
+        {...attribute}
       />
     </label>
   );

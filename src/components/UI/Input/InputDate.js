@@ -3,7 +3,7 @@ import classes from './InputDate.module.css';
 const DEFAULT_DATE = new Date();
 
 const InputDate = (props) => {
-  const { enteredDate = DEFAULT_DATE, onChangeDate = () => {} } = props;
+  const { enteredDate = DEFAULT_DATE, attribute } = props;
 
   const dateTxt =
     enteredDate &&
@@ -30,21 +30,17 @@ const InputDate = (props) => {
     <div className={classes['form-control--date']}>
       <input
         type='date'
-        value={dateVal}
-        onChange={onChangeDate}
-        {...props.attribute}
         className={classes['form-control--date__input']}
+        value={dateVal}
+        {...attribute}
       />
-      <input
-        type='text'
-        value={dateTxt === '' ? '----년 --월 --일' : dateTxt}
-        readOnly
-        tabIndex='-1'
-        {...props.attribute}
+      <div
         className={`${classes['form-control--date__text']} ${
           dateTxt === '' ? classes.empty : ''
         }`}
-      />
+      >
+        {dateTxt === '' ? '----년 --월 --일' : dateTxt}
+      </div>
     </div>
   );
 };

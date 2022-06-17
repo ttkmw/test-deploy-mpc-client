@@ -27,7 +27,13 @@
   color: #fff;
 }
 
-.input--checkbox:checked:disabled,
-.input--checkbox:checked:disabled + .input--checkbox--text {
+.input--checkbox:disabled,
+.input--checkbox:disabled + .input--checkbox--text {
   cursor: no-drop;
+}
+
+.input--checkbox:is(:checked, :disabled),
+.input--checkbox:is(:checked, :disabled) + .input--checkbox--text {
+  color: #fff;
+  background-color: #1570ff;
 }

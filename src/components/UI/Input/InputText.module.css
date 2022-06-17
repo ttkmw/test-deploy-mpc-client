@@ -23,15 +23,6 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px #fafafa inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
   -webkit-text-fill-color: #222836 !important;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-
-input[type='number'] {
-  -webkit-appearance: textfield;
 }

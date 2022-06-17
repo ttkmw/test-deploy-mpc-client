@@ -1,12 +1,11 @@
 import classes from './InputText.module.css';
 
 const InputText = (props) => {
+  const { attribute } = props;
+
   return (
     <div className={classes['form-control--text']}>
-      <input
-        {...props.attribute}
-        className={classes['form-control--text__input']}
-      />
+      <input className={classes['form-control--text__input']} {...attribute} />
     </div>
   );
 };
