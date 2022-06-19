@@ -7,6 +7,7 @@ const AppointmentInfo = (props) => {
     <div
       className={classes['appointment-info']}
       data-product-type={appointmentInfo.productType}
+      onClick={(evt) => evt.stopPropagation()}
     >
       <div className={classes['appointment-info__inner']}>
         <div className={classes['appointment-info__time']}>
