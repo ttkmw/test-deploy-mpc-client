@@ -1,18 +1,4 @@
 .view-switch {
-  position: relative;
-  display: flex;
-}
-
-.view-switch__checkbox {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-.view-switch__label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +7,7 @@
 }
 
 @media screen and (max-width: 736px) {
-  .view-switch__label {
+  .view-switch {
     width: 2.1667rem;
     height: 2.1667rem;
   }
