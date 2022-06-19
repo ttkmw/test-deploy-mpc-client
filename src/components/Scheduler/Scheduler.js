@@ -215,16 +215,6 @@ const Scheduler = (props) => {
 
   const addPropsToReactElement = (element, props) => {
     if (React.isValidElement(element)) {
-      const { viewState } = schedulerDate;
-
-      if (!viewState && element.type.name === 'WeekView') {
-        return;
-      }
-
-      if (viewState && element.type.name === 'MonthView') {
-        return;
-      }
-
       return React.cloneElement(element, props);
     }
     return element;

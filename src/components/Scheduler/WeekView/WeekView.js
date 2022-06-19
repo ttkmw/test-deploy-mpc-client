@@ -5,6 +5,9 @@ import TimeScaleLayout from './TimeScaleLayout/TimeScaleLayout';
 import TimeTableLayout from './TimeTableLayout/TimeTableLayout';
 
 const WeekView = (props) => {
+  if (!props.schedulerDate.viewState) {
+    return null;
+  }
   return (
     <div>
       <SchedulerHeader>

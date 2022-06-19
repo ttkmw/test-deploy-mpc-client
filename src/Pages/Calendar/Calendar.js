@@ -46,8 +46,8 @@ const Calendar = () => {
         <main>
           <Scheduler>
             <DateNavigator />
-            <WeekView startDayHour={0} endDayHour={24} />
             <MonthView />
+            <WeekView startDayHour={0} endDayHour={24} />
           </Scheduler>
         </main>
         <Aside>

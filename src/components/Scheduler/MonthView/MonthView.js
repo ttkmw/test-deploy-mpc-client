@@ -4,6 +4,9 @@ import DayScaleLayout from './DayScaleLayout/DayScaleLayout';
 import TimeTableLayout from './TimeTableLayout/TimeTableLayout';
 
 const MonthView = (props) => {
+  if (props.schedulerDate.viewState) {
+    return null;
+  }
   return (
     <div>
       <SchedulerHeader>
