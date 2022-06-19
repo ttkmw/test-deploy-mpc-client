@@ -1,9 +1,9 @@
 import classes from './InputPrice.module.css';
 
 const InputPrice = (props) => {
-  const { attribute, enteredPrice = 0 } = props;
+  const { attribute } = props;
 
-  let value = enteredPrice;
+  let value = attribute.value;
   value = Number(value.replaceAll(',', ''));
   if (isNaN(value)) {
     value = 0;
@@ -16,8 +16,8 @@ const InputPrice = (props) => {
       <input
         type='text'
         className={classes['form-control--price__input']}
-        value={value}
         {...attribute}
+        value={value}
       />
       <div className={classes['form-control--price__text']}>{value}</div>
     </div>

@@ -1,29 +1,26 @@
 import classes from './InputDate.module.css';
 
-const DEFAULT_DATE = new Date();
-
 const InputDate = (props) => {
-  const { enteredDate = DEFAULT_DATE, attribute } = props;
+  const { attribute } = props;
 
   const dateTxt =
-    enteredDate &&
-    enteredDate.toLocaleDateString('ko-KR', {
+    attribute.value &&
+    attribute.value.toLocaleDateString('ko-KR', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
       weekday: 'long',
     });
-
   const dateVal =
-    enteredDate &&
-    `${enteredDate.getFullYear()}-${
-      enteredDate.getMonth() < 9
-        ? `0${enteredDate.getMonth() + 1}`
-        : enteredDate.getMonth() + 1
+    attribute.value &&
+    `${attribute.value.getFullYear()}-${
+      attribute.value.getMonth() < 9
+        ? `0${attribute.value.getMonth() + 1}`
+        : attribute.value.getMonth() + 1
     }-${
-      enteredDate.getDate() < 10
-        ? `0${enteredDate.getDate()}`
-        : enteredDate.getDate()
+      attribute.value.getDate() < 10
+        ? `0${attribute.value.getDate()}`
+        : attribute.value.getDate()
     }`;
 
   return (
@@ -31,8 +28,8 @@ const InputDate = (props) => {
       <input
         type='date'
         className={classes['form-control--date__input']}
-        value={dateVal}
         {...attribute}
+        value={dateVal}
       />
       <div
         className={`${classes['form-control--date__text']} ${
