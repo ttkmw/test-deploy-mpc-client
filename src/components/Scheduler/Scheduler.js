@@ -236,6 +236,7 @@ const Scheduler = (props) => {
         schedulerDate,
         data: appointments,
         onChangeSchedulerDate: dispatchSchedulerDate,
+        adjDateFormat,
       })}
     </div>
   );
