@@ -45,6 +45,10 @@
   padding: 0.625rem 0;
 }
 
+.view-switcher {
+  display: none;
+}
+
 @media screen and (max-width: 1024px) {
   .timetable-cell__data {
     padding: 0.4285rem 0;
@@ -63,5 +67,11 @@
 
   .timetable-cell__data {
     padding: 0.3333rem 0;
+  }
+
+  .view-switcher {
+    position: absolute;
+    inset: 0;
+    display: block;
   }
 }

@@ -5,7 +5,7 @@ import AppointmentForm from '../../AppointmentForm/AppointmentForm';
 import classes from './TimeTableCell.module.css';
 
 const TimeTableCell = (props) => {
-  const { date, thisMonth, isSunday, cellData } = props;
+  const { date, onChangeSchedulerDate, thisMonth, isSunday, cellData } = props;
   const [formIsShown, setFormIsShown] = useState(false);
 
   const isToday =
@@ -51,6 +51,13 @@ const TimeTableCell = (props) => {
         )}
       </div>
       {formIsShown && <AppointmentForm onClose={hideFormHandler} {...props} />}
+      <div
+        className={classes['view-switcher']}
+        onClick={() => {
+          onChangeSchedulerDate({ type: 'SWITCH_VIEW' });
+          onChangeSchedulerDate({ type: 'CUR_WEEK', value: date });
+        }}
+      ></div>
     </div>
   );
 };
