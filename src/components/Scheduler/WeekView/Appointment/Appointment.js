@@ -2,7 +2,7 @@ import AppointmentInfo from './AppointmentInfo';
 import classes from './Appointment.module.css';
 
 const Appointment = (props) => {
-  const { appointment } = props;
+  const { appointment, onShowForm } = props;
 
   const startTime = new Date(appointment.time.startTime)
     .toTimeString()
@@ -30,6 +30,7 @@ const Appointment = (props) => {
         top: startPoint,
         height: totalHeight,
       }}
+      onClick={onShowForm}
     >
       <AppointmentInfo {...props} playTime={playTime} />
     </div>

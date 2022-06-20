@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import Appointment from '../Appointment/Appointment';
 import AppointmentForm from '../../AppointmentForm/AppointmentForm';
+import ModifyForm from '../../ModifyForm/ModifyForm';
 import classes from './TimeTableCell.module.css';
 
 const TimeTableCell = (props) => {
@@ -25,7 +26,14 @@ const TimeTableCell = (props) => {
     return (
       <div className={`${classes['timetable-cell']} ${isToday}`}>
         <div className={classes['timetable-cell__inner']}>
-          <Appointment appointment={cellData} />
+          <Appointment appointment={cellData} onShowForm={showFormHandler} />
+          {formIsShown && (
+            <ModifyForm
+              {...props}
+              appointmentInfo={cellData}
+              onClose={hideFormHandler}
+            />
+          )}
         </div>
       </div>
     );

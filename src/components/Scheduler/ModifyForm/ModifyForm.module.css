@@ -1,0 +1,79 @@
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.9375rem;
+  font-size: 0.9375rem;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  column-gap: 0.625rem;
+}
+
+.form-row--textarea {
+  align-items: flex-start;
+}
+
+.form-control--label {
+  flex: 0 0 2.5rem;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.form-row--textarea .form-control--label {
+  padding-top: 0.6667em;
+}
+
+.form-control--label.hidden {
+  overflow: hidden;
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.form-control--input {
+  flex: 1 1;
+}
+
+.form-control--input.inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 0.3125rem;
+}
+
+.form-control--input.justify-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-control--input.textarea {
+  height: 6.75rem;
+}
+
+.form-actions {
+  display: flex;
+  column-gap: 0.9375rem;
+}
+
+.form-actions .btn-delete,
+.form-actions .btn-modify {
+  width: 100%;
+  height: 3.375rem;
+  border-radius: 1rem;
+  background-color: #1570ff;
+  color: #fff;
+}
+
+.form-actions .btn-delete {
+  background-color: #f2f5f7;
+  color: #222836;
+}
+
+.form-actions .btn-delete:disabled {
+  background-color: #9fb1bd;
+  color: #fff;
+  cursor: no-drop;
+}

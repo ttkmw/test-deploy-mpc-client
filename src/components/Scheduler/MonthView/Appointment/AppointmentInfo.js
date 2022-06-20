@@ -1,7 +1,19 @@
+import { useState } from 'react';
+
+import ModifyForm from '../../ModifyForm/ModifyForm';
 import classes from './AppointmentInfo.module.css';
 
 const AppointmentInfo = (props) => {
   const { appointmentInfo } = props;
+  const [formIsShown, setFormIsShown] = useState(false);
+
+  const showFormHandler = () => {
+    setFormIsShown(true);
+  };
+
+  const hideFormHandler = () => {
+    setFormIsShown(false);
+  };
 
   return (
     <div
@@ -9,7 +21,10 @@ const AppointmentInfo = (props) => {
       data-product-type={appointmentInfo.productType}
       onClick={(evt) => evt.stopPropagation()}
     >
-      <div className={classes['appointment-info__inner']}>
+      <div
+        className={classes['appointment-info__inner']}
+        onClick={showFormHandler}
+      >
         <div className={classes['appointment-info__time']}>
           {appointmentInfo.time.startTime.split('T')[1].slice(0, 5)}
           <span className={classes['appointment-info__time--tilde']}>~</span>
@@ -21,6 +36,7 @@ const AppointmentInfo = (props) => {
           {appointmentInfo.consumer}
         </div>
       </div>
+      {formIsShown && <ModifyForm {...props} onClose={hideFormHandler} />}
     </div>
   );
 };
