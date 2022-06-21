@@ -29,7 +29,7 @@ const OptionalForm = (props) => {
 
     if (httpMethod === 'DELETE') {
       fetch(
-        `https://dev.plab.so/products/${appointmentInfo.id}/${
+        `http://localhost:8080/products/${appointmentInfo.id}/${
           once || everSince || all
         }`,
         {
@@ -69,7 +69,7 @@ const OptionalForm = (props) => {
 
     if (httpMethod === 'PUT') {
       fetch(
-        `https://dev.plab.so/products/${appointmentInfo.id}/${
+        `http://localhost:8080/products/${appointmentInfo.id}/${
           once || everSince || all
         }`,
         {

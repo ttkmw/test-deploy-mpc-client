@@ -132,7 +132,7 @@ const ModifyForm = (props) => {
 
     if (evt.nativeEvent.submitter.innerText === '일정 취소') {
       if (!isRepeatOpt) {
-        fetch(`https://dev.plab.so/products/${appointmentInfo.id}/once`, {
+        fetch(`http://localhost:8080/products/${appointmentInfo.id}/once`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -174,7 +174,7 @@ const ModifyForm = (props) => {
 
     if (evt.nativeEvent.submitter.innerText === '수정') {
       if (!isRepeatOpt) {
-        fetch(`https://dev.plab.so/products/${appointmentInfo.id}/once`, {
+        fetch(`http://localhost:8080/products/${appointmentInfo.id}/once`, {
           method: 'PUT',
           body: JSON.stringify({
             productType: enteredProductType,

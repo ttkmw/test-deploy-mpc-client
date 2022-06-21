@@ -195,7 +195,7 @@ const Scheduler = (props) => {
 
     if (+params.zoneId) {
       fetch(
-        `https://dev.plab.so/products?startDate=${startDate}&endDate=${endDate}&zoneId=${params.zoneId}`,
+        `http://localhost:8080/products?startDate=${startDate}&endDate=${endDate}&zoneId=${params.zoneId}`,
         {
           method: 'GET',
           headers: {

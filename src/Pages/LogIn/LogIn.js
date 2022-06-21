@@ -23,7 +23,7 @@ const LogIn = () => {
 
     setIsLoading(true);
 
-    fetch('https://dev.plab.so/auth/signIn', {
+    fetch('http://localhost:8080/auth/signIn', {
       method: 'POST',
       body: JSON.stringify({
         email: enteredEmail,

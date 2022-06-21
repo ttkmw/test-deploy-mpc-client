@@ -119,7 +119,7 @@ const AppointmentForm = (props) => {
     const price = Number(enteredPrice.replaceAll(',', ''));
 
     if (!isRepeatOpt) {
-      fetch('https://dev.plab.so/products', {
+      fetch('http://localhost:8080/products', {
         method: 'POST',
         body: JSON.stringify({
           productType: enteredProductType,
@@ -167,7 +167,7 @@ const AppointmentForm = (props) => {
     }
 
     if (isRepeatOpt) {
-      fetch('https://dev.plab.so/products/weeks', {
+      fetch('http://localhost:8080/products/weeks', {
         method: 'POST',
         body: JSON.stringify({
           productType: enteredProductType,

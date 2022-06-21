@@ -22,7 +22,7 @@ const Calendar = () => {
   };
 
   useEffect(() => {
-    fetch('https://dev.plab.so/stadiums', {
+    fetch('http://localhost:8080/stadiums', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
