@@ -15,11 +15,7 @@ const TimeTableCell = (props) => {
       : '';
 
   const showFormHandler = () => {
-    setFormIsShown(true);
-  };
-
-  const hideFormHandler = () => {
-    setFormIsShown(false);
+    setFormIsShown((prevState) => !prevState);
   };
 
   if (cellData) {
@@ -31,7 +27,7 @@ const TimeTableCell = (props) => {
             <ModifyForm
               {...props}
               appointmentInfo={cellData}
-              onClose={hideFormHandler}
+              onClose={showFormHandler}
             />
           )}
         </div>
@@ -45,7 +41,7 @@ const TimeTableCell = (props) => {
         className={classes['timetable-cell__inner']}
         onClick={showFormHandler}
       ></div>
-      {formIsShown && <AppointmentForm onClose={hideFormHandler} {...props} />}
+      {formIsShown && <AppointmentForm {...props} onClose={showFormHandler} />}
     </div>
   );
 };

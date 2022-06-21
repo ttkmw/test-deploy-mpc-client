@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 
 import Modal from '../../UI/Modal/Modal';
+import OptionalForm from '../OptionalForm/OptionalForm';
 import InputText from '../../UI/Input/InputText';
 import InputDate from '../../UI/Input/InputDate';
 import InputPrice from '../../UI/Input/InputPrice';
@@ -22,7 +23,13 @@ const timeOptions = () => {
 
 const ModifyForm = (props) => {
   const authCtx = useContext(AuthContext);
-  const { date, schedulerDate, onChangeSchedulerDate, appointmentInfo } = props;
+  const {
+    date,
+    schedulerDate,
+    onChangeSchedulerDate,
+    adjDateFormat,
+    appointmentInfo,
+  } = props;
 
   const appointmentStartTime = new Date(appointmentInfo.time.startTime);
   const appointmentEndTime = new Date(appointmentInfo.time.endTime);
@@ -44,11 +51,18 @@ const ModifyForm = (props) => {
   const [enteredProductType, setEnteredProductType] = useState(
     appointmentInfo.productType
   );
-  const [enteredDate, setEnteredDate] = useState(appointmentStartTime);
+  const [enteredDate, setEnteredDate] = useState(
+    new Date(appointmentInfo.date)
+  );
   const [enteredStartTime, setEnteredStartTime] = useState(defaultStartTime);
   const [enteredEndTime, setEnteredEndTime] = useState(defaultEndTime);
 
   const isRepeatOpt = appointmentInfo.isRepeat;
+  const enteredDateText =
+    isRepeatOpt &&
+    new Date(appointmentInfo.date).toLocaleDateString('ko-KR', {
+      weekday: 'long',
+    });
   const enteredRepeatEndDate =
     isRepeatOpt &&
     new Date(appointmentInfo.repeatOpt.endDate).toLocaleDateString('ko-KR', {
@@ -102,6 +116,17 @@ const ModifyForm = (props) => {
     setEnteredNote(evt.target.value);
   };
 
+  const [optionalFormIsShown, setOptionalFormIsShown] = useState(false);
+  const [optionalFormType, setOptionalFormType] = useState('');
+
+  const showOptionalForm = () => {
+    setOptionalFormIsShown((prevState) => !prevState);
+  };
+
+  const resetOptionalFormTypeHandler = () => {
+    setOptionalFormType('');
+  };
+
   const submitHandler = (evt) => {
     evt.preventDefault();
 
@@ -123,7 +148,6 @@ const ModifyForm = (props) => {
             });
           })
           .then((data) => {
-            props.onClose();
             if (schedulerDate.viewState === false) {
               onChangeSchedulerDate({
                 type: 'CUR_MONTH',
@@ -139,6 +163,65 @@ const ModifyForm = (props) => {
           .catch((err) => {
             alert(err.message);
           });
+        props.onClose();
+      }
+
+      if (isRepeatOpt) {
+        setOptionalFormIsShown((prevState) => !prevState);
+        setOptionalFormType('일정 취소');
+      }
+    }
+
+    if (evt.nativeEvent.submitter.innerText === '수정') {
+      if (!isRepeatOpt) {
+        fetch(`https://dev.plab.so/products/${appointmentInfo.id}/once`, {
+          method: 'PUT',
+          body: JSON.stringify({
+            productType: enteredProductType,
+            time: {
+              startTime: `${adjDateFormat(enteredDate)}T${enteredStartTime}`,
+              endTime: `${adjDateFormat(enteredDate)}T${enteredEndTime}`,
+            },
+            consumer: enteredName,
+            price: Number(enteredPrice.replaceAll(',', '')),
+            phoneNum: enteredPhoneNum,
+            note: enteredNote,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authCtx.token}`,
+          },
+        })
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            }
+            return res.json().then((data) => {
+              throw new Error(data.message);
+            });
+          })
+          .then((data) => {
+            if (!schedulerDate.viewState) {
+              onChangeSchedulerDate({
+                type: 'CUR_MONTH',
+                value: new Date(date),
+              });
+            } else {
+              onChangeSchedulerDate({
+                type: 'CUR_WEEK',
+                value: new Date(date),
+              });
+            }
+          })
+          .catch((err) => {
+            alert(err.message);
+          });
+        props.onClose();
+      }
+
+      if (isRepeatOpt) {
+        setOptionalFormIsShown((prevState) => !prevState);
+        setOptionalFormType('수정');
       }
     }
   };
@@ -236,9 +319,7 @@ const ModifyForm = (props) => {
             <div
               className={`${classes['form-control--input']} ${classes['justify-end']}`}
             >
-              {`매주 ${enteredDate.toLocaleDateString('ko-KR', {
-                weekday: 'long',
-              })}, 종료일: ${enteredRepeatEndDate}`}
+              {`매주 ${enteredDateText}, 종료일: ${enteredRepeatEndDate}`}
             </div>
           </div>
         )}
@@ -375,6 +456,37 @@ const ModifyForm = (props) => {
           </div>
         )}
       </form>
+      {optionalFormIsShown && optionalFormType === '일정 취소' && (
+        <OptionalForm
+          {...props}
+          modalTitle='반복 일정 취소'
+          buttonText='일정 취소'
+          onClose={props.onClose}
+          onCloseOptionalForm={showOptionalForm}
+          onResetOptionalFormType={resetOptionalFormTypeHandler}
+        />
+      )}
+      {optionalFormIsShown && optionalFormType === '수정' && (
+        <OptionalForm
+          {...props}
+          modalTitle='반복 일정 수정'
+          buttonText='수정'
+          onClose={props.onClose}
+          onCloseOptionalForm={showOptionalForm}
+          onResetOptionalFormType={resetOptionalFormTypeHandler}
+          payload={{
+            productType: enteredProductType,
+            time: {
+              startTime: `${adjDateFormat(enteredDate)}T${enteredStartTime}`,
+              endTime: `${adjDateFormat(enteredDate)}T${enteredEndTime}`,
+            },
+            price: Number(enteredPrice.replaceAll(',', '')),
+            consumer: enteredName,
+            phoneNum: enteredPhoneNum,
+            note: enteredNote,
+          }}
+        />
+      )}
     </Modal>
   );
 };
