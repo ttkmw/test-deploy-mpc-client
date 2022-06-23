@@ -62,6 +62,7 @@ const LogIn = () => {
       <h1 className={classes['login-form-container__logo']}>
         <LogInLogo />
       </h1>
+      <div>hahaha</div>
       <form onSubmit={submitHandler} className={classes['login-form']}>
         <InputText
           attribute={{
