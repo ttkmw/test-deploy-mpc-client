@@ -61,8 +61,8 @@ const LogIn = () => {
     <section className={classes['login-form-container']}>
       <h1 className={classes['login-form-container__logo']}>
         <LogInLogo />
-        <div>0428</div>
       </h1>
+      <div>0436</div>
       <form onSubmit={submitHandler} className={classes['login-form']}>
         <InputText
           attribute={{
