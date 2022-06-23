@@ -44,5 +44,5 @@ jobs:
           aws-region: ap-northeast-2
       # Copy the files from build folder to the S3 bucket
       - name: Deploy to S3
-        run: aws s3 sync . s3://hosting-test2.plab.so --exact-timestamps --no-follow-symlinks
+        run: aws s3 sync . s3://hosting-test2.plab.so --exact-timestamps --no-follow-symlinks --cache-control 'max-age=0' --recursive
         working-directory: react-github-actions-build
