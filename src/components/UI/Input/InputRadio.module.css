@@ -1,11 +1,10 @@
-.input--label-radio {
+.form-control--radio {
   display: flex;
-  column-gap: 0.3125rem;
+  align-items: center;
   font-size: 0.9375rem;
-  cursor: pointer;
 }
 
-.input--radio {
+.form-control--radio__input {
   position: relative;
   display: flex;
   justify-content: center;
@@ -17,11 +16,11 @@
   background-color: #fff;
 }
 
-.input--radio:checked {
+.form-control--radio__input:checked {
   border-color: #1570ff;
 }
 
-.input--radio:checked::after {
+.form-control--radio__input:checked::after {
   width: 0.875rem;
   height: 0.875rem;
   border-radius: 50%;
@@ -29,8 +28,12 @@
   content: '';
 }
 
-.input--radio:disabled,
-.input--radio:disabled + .input--radio--text {
+.form-control--radio__text:not(:empty) {
+  margin-left: 0.2667em;
+}
+
+.form-control--radio__input:disabled,
+.form-control--radio__input:disabled + .form-control--radio__text {
   color: #c1ccd6;
   cursor: no-drop;
 }

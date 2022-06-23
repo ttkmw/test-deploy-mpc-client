@@ -1,4 +1,8 @@
-.input--toggle {
+.form-control--btn-toggle {
+  position: relative;
+}
+
+.form-control--btn-toggle__input {
   display: flex;
   align-items: center;
   width: 3rem;
@@ -10,11 +14,11 @@
   transition: background-color 0.25s;
 }
 
-.input--toggle:checked {
+.form-control--btn-toggle__input:checked {
   background-color: #1570ff;
 }
 
-.input--toggle::before {
+.form-control--btn-toggle__input::before {
   display: block;
   width: 1.25rem;
   height: 1.25rem;
@@ -25,6 +29,6 @@
   content: '';
 }
 
-.input--toggle:checked::before {
+.form-control--btn-toggle__input:checked::before {
   margin-left: calc(100% - 1.25rem);
 }

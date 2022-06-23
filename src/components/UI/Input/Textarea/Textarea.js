@@ -1,12 +1,16 @@
 import classes from './Textarea.module.css';
 
 const Textarea = (props) => {
-  const { attribute } = props;
+  const { attribute, classList = [] } = props;
+  const className = `${classes['form-control--textarea']} ${classList
+    .map((item) => classes[item])
+    .join(' ')}`;
+
   return (
-    <div className={classes['form-control--textarea']}>
+    <div className={className}>
       <textarea
-        className={classes['form-control--textarea__text']}
         {...attribute}
+        className={classes['form-control--textarea__input']}
       ></textarea>
     </div>
   );

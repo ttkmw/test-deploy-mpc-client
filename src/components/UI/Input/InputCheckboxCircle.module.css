@@ -1,4 +1,4 @@
-.input--label-checkbox {
+.form-control--checkbox-circle {
   position: relative;
   display: flex;
   justify-content: center;
@@ -6,34 +6,30 @@
   cursor: pointer;
 }
 
-.input--checkbox {
-  width: 2.1875rem;
-  height: 2.1875rem;
+.form-control--checkbox-circle__input {
+  width: 2.25rem;
+  height: 2.25rem;
   border-radius: 50%;
   background-color: #fafafa;
 }
 
-.input--checkbox:checked {
+.form-control--checkbox-circle__input:checked {
   background-color: #1570ff;
 }
 
-.input--checkbox--text {
+.form-control--checkbox-circle__text {
   position: absolute;
   font-size: 0.8125rem;
   color: #9fb1bd;
 }
 
-.input--checkbox:checked + .input--checkbox--text {
+.form-control--checkbox-circle__input:checked
+  + .form-control--checkbox-circle__text {
   color: #fff;
 }
 
-.input--checkbox:disabled,
-.input--checkbox:disabled + .input--checkbox--text {
+.form-control--checkbox-circle__input:disabled,
+.form-control--checkbox-circle__input:disabled
+  + .form-control--checkbox-circle__text {
   cursor: no-drop;
-}
-
-.input--checkbox:is(:checked, :disabled),
-.input--checkbox:is(:checked, :disabled) + .input--checkbox--text {
-  color: #fff;
-  background-color: #1570ff;
 }

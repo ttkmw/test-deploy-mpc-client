@@ -1,16 +1,11 @@
 import classes from './InputDate.module.css';
 
 const InputDate = (props) => {
-  const { attribute } = props;
+  const { attribute, classList = [] } = props;
+  const className = `${classes['form-control--date']} ${classList
+    .map((item) => classes[item])
+    .join(' ')}`;
 
-  const dateTxt =
-    attribute.value &&
-    attribute.value.toLocaleDateString('ko-KR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      weekday: 'long',
-    });
   const dateVal =
     attribute.value &&
     `${attribute.value.getFullYear()}-${
@@ -23,21 +18,24 @@ const InputDate = (props) => {
         : attribute.value.getDate()
     }`;
 
+  const dateTxt =
+    attribute.value &&
+    attribute.value.toLocaleDateString('ko-KR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long',
+    });
+
   return (
-    <div className={classes['form-control--date']}>
+    <div className={className}>
       <input
         type='date'
-        className={classes['form-control--date__input']}
         {...attribute}
+        className={classes['form-control--date__input']}
         value={dateVal}
       />
-      <div
-        className={`${classes['form-control--date__text']} ${
-          dateTxt === '' ? classes.empty : ''
-        }`}
-      >
-        {dateTxt === '' ? '----년 --월 --일' : dateTxt}
-      </div>
+      <div className={classes['form-control--date__text']}>{dateTxt}</div>
     </div>
   );
 };

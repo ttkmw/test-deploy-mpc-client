@@ -1,7 +1,10 @@
 import classes from './InputPrice.module.css';
 
 const InputPrice = (props) => {
-  const { attribute } = props;
+  const { attribute, classList = [] } = props;
+  const className = `${classes['form-control--price']} ${classList
+    .map((item) => classes[item])
+    .join(' ')}`;
 
   let value = attribute.value;
   value = Number(value.replaceAll(',', ''));
@@ -12,11 +15,11 @@ const InputPrice = (props) => {
   }
 
   return (
-    <div className={classes['form-control--price']}>
+    <div className={className}>
       <input
         type='text'
-        className={classes['form-control--price__input']}
         {...attribute}
+        className={classes['form-control--price__input']}
         value={value}
       />
       <div className={classes['form-control--price__text']}>{value}</div>

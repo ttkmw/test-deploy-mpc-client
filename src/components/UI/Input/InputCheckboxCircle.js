@@ -1,15 +1,21 @@
 import classes from './InputCheckboxCircle.module.css';
 
 const InputCheckboxCircle = (props) => {
-  const { attribute } = props;
+  const { attribute, classList = [] } = props;
+  const className = `${classes['form-control--checkbox-circle']} ${classList
+    .map((item) => classes[item])
+    .join(' ')}`;
+
   return (
-    <label htmlFor={attribute.id} className={classes['input--label-checkbox']}>
+    <label htmlFor={attribute.id} className={className}>
       <input
         type='checkbox'
-        className={classes['input--checkbox']}
         {...attribute}
+        className={classes['form-control--checkbox-circle__input']}
       />
-      <span className={classes['input--checkbox--text']}>{props.children}</span>
+      <span className={classes['form-control--checkbox-circle__text']}>
+        {props.children}
+      </span>
     </label>
   );
 };

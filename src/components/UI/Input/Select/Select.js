@@ -2,17 +2,20 @@ import ChevronLeft from '../../Icons/Chevron/ChevronLeft';
 import classes from './Select.module.css';
 
 const Select = (props) => {
-  const { attribute, placeholder = '' } = props;
+  const { attribute, placeholder, classList = [] } = props;
+  const className = `${classes['form-control--select']} ${classList
+    .map((item) => classes[item])
+    .join(' ')}`;
 
   return (
-    <div className={classes['form-control--select']}>
+    <div className={className}>
       <select
-        className={`${classes['form-control--select__select']} ${
-          attribute.value === '' ? classes['has-placeholder'] : ''
-        }`}
         {...attribute}
+        className={`${classes['form-control--select__input']} ${
+          attribute.value ? '' : classes['has-placeholder']
+        }`}
       >
-        {attribute.value === '' && (
+        {!attribute.value && (
           <option value='' disabled hidden>
             {placeholder}
           </option>
@@ -23,7 +26,7 @@ const Select = (props) => {
           </option>
         ))}
       </select>
-      <i className={classes['form-control--select__select--icon']}>
+      <i className={classes['form-control--select__icon']}>
         <ChevronLeft />
       </i>
     </div>

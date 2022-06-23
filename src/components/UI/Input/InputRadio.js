@@ -1,14 +1,21 @@
 import classes from './InputRadio.module.css';
 
 const InputRadio = (props) => {
-  const { attribute } = props;
+  const { attribute, classList = [] } = props;
+  const className = `${classes['form-control--radio']} ${classList
+    .map((item) => classes[item])
+    .join(' ')}`;
+
   return (
-    <label
-      htmlFor={props.attribute.id}
-      className={classes['input--label-radio']}
-    >
-      <input type='radio' className={classes['input--radio']} {...attribute} />
-      <span className={classes['input--radio--text']}>{props.children}</span>
+    <label htmlFor={props.attribute.id} className={className}>
+      <input
+        type='radio'
+        {...attribute}
+        className={classes['form-control--radio__input']}
+      />
+      <span className={classes['form-control--radio__text']}>
+        {props.children}
+      </span>
     </label>
   );
 };
